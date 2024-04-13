@@ -8,4 +8,5 @@ public class ChampionInfo
     public string championName;
     public string championType;
     public int leadership;
+    public string[] ownCastles;
 }

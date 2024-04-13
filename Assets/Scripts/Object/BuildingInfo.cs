@@ -9,4 +9,5 @@ public class BuildingInfo
     public int hp;
     public int population;
     public string castellanName;
+    public string[] champions;
 }
