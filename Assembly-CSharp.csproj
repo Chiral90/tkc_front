@@ -65,15 +65,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets/Assets/Fantasy Character Pixel Art Pack1/Script/CharacterAnimation.cs" />
+    <Compile Include="Assets/WebGLSupport/WebGLWindow/WebGLWindow.cs" />
     <Compile Include="Assets/Scripts/Popup/UIManager.cs" />
     <Compile Include="Assets/Scripts/Player/PlayerController.cs" />
+    <Compile Include="Assets/WebGLSupport/WebGLInput/Wrapper/WrappedInputField.cs" />
     <Compile Include="Assets/Scripts/Object/BuildingInfo.cs" />
+    <Compile Include="Assets/Scripts/Node.cs" />
+    <Compile Include="Assets/WebGLSupport/WebGLInput/Wrapper/WrappedTMPInputField.cs" />
     <Compile Include="Assets/Mocapot/Fantasy Tileset/Scripts/LightController.cs" />
+    <Compile Include="Assets/WebGLSupport/WebGLInput/WebGLInput.cs" />
     <Compile Include="Assets/Scripts/Player/CursorController.cs" />
-    <Compile Include="Assets/Scripts/Popup/StartScene.cs" />
+    <Compile Include="Assets/WebGLSupport/WebGLInput/Mobile/WebGLInputMobile.cs" />
+    <Compile Include="Assets/Scripts/Player/ButtonAction.cs" />
     <Compile Include="Assets/Scripts/Popup/UIPopup.cs" />
+    <Compile Include="Assets/Scripts/Object/CurrentInfo.cs" />
     <Compile Include="Assets/Scripts/Object/ChampionInfo.cs" />
     <Compile Include="Assets/Scripts/Player/GetObject.cs" />
+    <Compile Include="Assets/WebGLSupport/WebGLInput/Detail/RebuildChecker.cs" />
+    <Compile Include="Assets/WebGLSupport/WebGLInput/Wrapper/IInputField.cs" />
     <Compile Include="Assets/Scripts/WebRequest.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -422,6 +431,10 @@
     </Reference>
     <Reference Include="Unity.Collections.LowLevel.ILSupport">
       <HintPath>Library/PackageCache/com.unity.collections@1.2.4/Unity.Collections.LowLevel.ILSupport/Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>Assets/Plugins/websocket-sharp.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Antlr3.Runtime">

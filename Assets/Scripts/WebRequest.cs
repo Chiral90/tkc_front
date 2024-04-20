@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,8 +7,6 @@ using UnityEngine.Networking;
 public class WebRequest : MonoBehaviour
 {
     private static WebRequest _instance;
-    public string serverURI = "http://192.168.0.2:8180";
-
     public static WebRequest Instance
     {
         get
@@ -40,33 +39,33 @@ public class WebRequest : MonoBehaviour
             {
                 Debug.LogError(webRequest.error);
             }
+            else if (webRequest.GetResponseHeader("id") is not null)
+            {
+                yield return webRequest.GetResponseHeader("id");
+            }
             else
             {
                 Debug.Log(webRequest.responseCode);
-                string result = webRequest.downloadHandler.text;
-                BuildingInfo json = JsonUtility.FromJson<BuildingInfo>(result);
-                yield return json;
+                string result = System.Text.Encoding.UTF8.GetString(webRequest.downloadHandler.data);
+                yield return result;
             }
         }
     }
-    public IEnumerator PostRequest(string uri, object obj)
+    public IEnumerator PostRequest(string uri, WWWForm obj)
     {
-        WWWForm form = new WWWForm();
-        //string id = "아이디";
-        //string pw = "비밀번호";
-        //form.AddField("Username", id);
-        //form.AddField("Password", pw);
-        using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, form))  // 보낼 주소와 데이터 입력
+        using (UnityWebRequest webRequest = UnityWebRequest.Post(uri, obj))  // 보낼 주소와 데이터 입력
         {
+            webRequest.SetRequestHeader("Cookie", string.Format("id={0}", CurrentInfo.currentID));
+            Debug.Log("POST champdata... / id : " + CurrentInfo.currentID);
             yield return webRequest.SendWebRequest();  // 응답 대기
 
-            if (webRequest.error == null)
+            if (webRequest.result == UnityWebRequest.Result.ConnectionError)
             {
-                Debug.Log(webRequest.downloadHandler.text);    // 데이터 출력
+                Debug.LogError(webRequest.error);
             }
             else
             {
-                Debug.Log("error");
+                Debug.Log(webRequest.downloadHandler.text);    // 데이터 출력
             }
         }
     }

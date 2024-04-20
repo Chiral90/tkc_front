@@ -184,7 +184,7 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 41c8874b14303036e8f967c2640a4489, type: 2}
+  m_fontAsset: {fileID: 0}
   m_sharedMaterial: {fileID: 4837323899653132168, guid: 41c8874b14303036e8f967c2640a4489, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &9903042
@@ -342,9 +342,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 935207374}
-        m_TargetAssemblyTypeName: GetObject, Assembly-CSharp
-        m_MethodName: clikcedButton
+      - m_Target: {fileID: 927239730}
+        m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
+        m_MethodName: startGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -410,7 +410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &174583155
 RectTransform:
   m_ObjectHideFlags: 0
@@ -475,9 +475,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 935207374}
-        m_TargetAssemblyTypeName: GetObject, Assembly-CSharp
-        m_MethodName: clikcedButton
+      - m_Target: {fileID: 927239730}
+        m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
+        m_MethodName: createChampion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1615,7 +1615,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855233310}
   m_CullTransparentMesh: 1
---- !u!1 &935207372
+--- !u!1 &927239729
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1623,22 +1623,34 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 935207373}
-  - component: {fileID: 935207374}
+  - component: {fileID: 927239731}
+  - component: {fileID: 927239730}
   m_Layer: 0
-  m_Name: GetObject
+  m_Name: ButtonAction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &935207373
+--- !u!114 &927239730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927239729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2431d3a30f1d010ca01fb04b4743c30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &927239731
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935207372}
+  m_GameObject: {fileID: 927239729}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 671.4885, y: 306.785, z: -9.12281}
@@ -1647,18 +1659,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &935207374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 935207372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71ab11326ac35c536b6f5361d74f9e21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &959616480
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,6 +2154,7 @@ GameObject:
   - component: {fileID: 1142005266}
   - component: {fileID: 1142005268}
   - component: {fileID: 1142005267}
+  - component: {fileID: 1142005269}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2202,8 +2203,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Start Game
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 41c8874b14303036e8f967c2640a4489, type: 2}
-  m_sharedMaterial: {fileID: 4837323899653132168, guid: 41c8874b14303036e8f967c2640a4489, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 461b51fdffdb584cdba735c086daed25, type: 2}
+  m_sharedMaterial: {fileID: -2203995054455807647, guid: 461b51fdffdb584cdba735c086daed25, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2277,6 +2278,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142005265}
   m_CullTransparentMesh: 1
+--- !u!114 &1142005269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1142005265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc33a39070010f94fb1c2dd721c1286d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  showHtmlElement: 0
 --- !u!1 &1232817638
 GameObject:
   m_ObjectHideFlags: 0
@@ -2359,7 +2373,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1232817641}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 927239730}
+        m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
+        m_MethodName: confirmCreateChampion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1232817641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2427,7 +2453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8fde2af5f87ddbf8bb08992303f5828, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serverURI: http://192.168.0.2:8180
 --- !u!4 &1352887361
 Transform:
   m_ObjectHideFlags: 0
@@ -3264,7 +3289,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1820591258}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 927239730}
+        m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
+        m_MethodName: cancelCreateChampion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1820591258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3653,6 +3690,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2036565000}
   m_CullTransparentMesh: 1
+--- !u!1001 &1057193415665758239
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3598175251407451193, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 671.4885
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598175251407451193, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 306.785
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598175251407451193, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.12281
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598175251407451193, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598175251407451193, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598175251407451193, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598175251407451193, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598175251407451193, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598175251407451193, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3598175251407451193, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7724477635982221062, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4479610714675441050, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3661,4 +3756,5 @@ SceneRoots:
   - {fileID: 1578740603}
   - {fileID: 1699615811}
   - {fileID: 1352887361}
-  - {fileID: 935207373}
+  - {fileID: 927239731}
+  - {fileID: 1057193415665758239}

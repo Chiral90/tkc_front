@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
+using System.Linq;
 
 public class GetObject : MonoBehaviour
 {
@@ -13,8 +16,6 @@ public class GetObject : MonoBehaviour
     GameObject buildingPopup;
 
     WebRequest webRequest;
-
-    BuildingInfo _binfo = new BuildingInfo();
     // Start is called before the first frame update
     void Start()
     {
@@ -40,13 +41,13 @@ public class GetObject : MonoBehaviour
                         onSelected = true;
                         GameObject clickObj = hit.transform.gameObject;
                         var objData = new object();
-                        string uri = webRequest.serverURI + "building/" + clickObj.name;
+                        string uri = CurrentInfo.serverURI + "building/" + clickObj.name;
                         Debug.Log(uri);
                         var result = webRequest.GetRequest(uri);
                         
                         while (result.MoveNext())
                         {
-                            if (result.Current.GetType().Equals(_binfo.GetType()))
+                            if (result.Current.GetType().Equals(typeof(BuildingInfo)))
                             {
                                 objData = result.Current;
                                 break;
@@ -77,15 +78,6 @@ public class GetObject : MonoBehaviour
                     
                 }
             }
-        }
-    }
-    public void clikcedButton()
-    {
-        string _clickedButton = EventSystem.current.currentSelectedGameObject.name;
-        Debug.Log(_clickedButton);
-        if (_clickedButton == "Start Game") { SceneManager.LoadScene("SampleScene"); }
-        else if (_clickedButton == "Create Champion") {
-            GameObject.Find("Canvas").transform.Find("Champion Data").gameObject.SetActive(true);
         }
     }
 }
