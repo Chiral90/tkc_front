@@ -39,22 +39,28 @@ public class UIManager : MonoBehaviour
     }
 
     // 팝업을 엽니다.
-    public void OpenPopup(UIPopup popup, object? data = null)
+    public void OpenBuildingPopup(UIPopup popup, BuildingInfo? data = null)
     {
         if (popup != null)
         {
             if (!data.IsUnityNull())
             {
-                Debug.Log(popup.gameObject.name);
+                Debug.Log(string.Format("current champ_name : {0} / castellan : {1} / equal? : {2}", CurrentInfo.currentChampion.champ_name, data.castellan, data.castellan.Equals(CurrentInfo.currentChampion.champ_name)));
                 var components = popup.gameObject.GetComponentsInChildren<TextMeshProUGUI>();
-                Debug.Log(components.Count());
                 foreach (var c in components)
                 {
-                    Debug.Log(c.gameObject.name);
-                    if (c.gameObject.name == "Building Name") { c.text = ((BuildingInfo)data).buildingName; }
-                    if (c.gameObject.name == "Building Population") { c.text = ((BuildingInfo)data).population.ToString(); }
-                    if (c.gameObject.name == "Building Castellan") { c.text = ((BuildingInfo)data).castellanName; }
+                    if (c.gameObject.name == "Building Name") { c.text = data.buildingName; }
+                    if (c.gameObject.name == "Building Population") { c.text = data.population.ToString(); }
+                    if (c.gameObject.name == "Building Castellan") { c.text = data.castellan; }
                 }
+                if (data.castellan.Equals(CurrentInfo.currentChampion.champ_name))
+                {
+                    popup.gameObject.transform.Find("Building Panel Options").gameObject.SetActive(true);
+                }
+            }
+            else
+            {
+                Debug.Log("data is null");
             }
             // 새로운 팝업을 엽니다.
             UIUtilities.SetUIActive(popup.gameObject, true);
@@ -75,7 +81,7 @@ public class UIManager : MonoBehaviour
             // 팝업이 닫힌 후 예약된 팝업이 있다면 엽니다.
             if (pendingPopups.Count > 0)
             {
-                OpenPopup(pendingPopups.Dequeue());
+                OpenBuildingPopup(pendingPopups.Dequeue());
             }
         }
     }

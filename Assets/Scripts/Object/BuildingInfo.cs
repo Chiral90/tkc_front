@@ -6,8 +6,10 @@ using UnityEngine;
 public class BuildingInfo
 {
     public string buildingName;
-    public int hp;
+    public string castellan;
+    public int buildingType;
     public int population;
-    public string castellanName;
-    public string[] champions;
+    public int food;
+    public int morale;
+    public string[] stationed;
 }

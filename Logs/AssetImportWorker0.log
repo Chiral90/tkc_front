@@ -3,18 +3,18 @@ Branch:                  2022.3/staging
 Build type:              Release
 Batch mode:              YES
 System name:             Linux
-Distro version:          #1 SMP PREEMPT_DYNAMIC Thu, 11 Apr 2024 01:47:33 +0000
-Kernel version:          6.8.5-arch1-1
+Distro version:          #1 SMP PREEMPT_DYNAMIC Wed, 17 Apr 2024 15:20:28 +0000
+Kernel version:          6.8.7-arch1-1
 Architecture:            x86_64
 Available memory:        15656 MB
 Using pre-set license
 Pro License: YES
-Gtk-Message: 16:15:12.734: Failed to load module "canberra-gtk-module"
-Gtk-Message: 16:15:12.734: Failed to load module "canberra-gtk-module"
+Gtk-Message: 00:47:52.895: Failed to load module "canberra-gtk-module"
+Gtk-Message: 00:47:52.896: Failed to load module "canberra-gtk-module"
 
-(Unity:7745): Gtk-CRITICAL **: 16:15:12.739: gtk_window_set_default_icon: assertion 'GDK_IS_PIXBUF (icon)' failed
+(Unity:788): Gtk-CRITICAL **: 00:47:52.900: gtk_window_set_default_icon: assertion 'GDK_IS_PIXBUF (icon)' failed
 
-(Unity:7745): GLib-GObject-CRITICAL **: 16:15:12.739: g_object_unref: assertion 'G_IS_OBJECT (object)' failed
+(Unity:788): GLib-GObject-CRITICAL **: 00:47:52.900: g_object_unref: assertion 'G_IS_OBJECT (object)' failed
 Desktop is 1920 x 1080 @ 60 Hz
 Initialize udev device monitor.
 
@@ -30,7 +30,7 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-45553
+39115
 Successfully changed project path to: /home/chiral/Project/tkc_front
 /home/chiral/Project/tkc_front
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
@@ -64,12 +64,12 @@ Successfully changed project path to: /home/chiral/Project/tkc_front
     "memorysetup-temp-allocator-size-cloud-worker=32768"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [135117691650752] Host "[IP] 192.168.0.2 [Port] 0 [Flags] 2 [Guid] 2416246533 [EditorId] 2416246533 [Version] 1048832 [Id] LinuxEditor(16,192.168.0.2) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+Player connection [134929226760896] Host "[IP] 192.168.0.2 [Port] 0 [Flags] 2 [Guid] 2785681536 [EditorId] 2785681536 [Version] 1048832 [Id] LinuxEditor(16,192.168.0.2) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
 
-Player connection [135117691650752] Host "[IP] 192.168.0.2 [Port] 0 [Flags] 2 [Guid] 2416246533 [EditorId] 2416246533 [Version] 1048832 [Id] LinuxEditor(16,192.168.0.2) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [134929226760896] Host "[IP] 192.168.0.2 [Port] 0 [Flags] 2 [Guid] 2785681536 [EditorId] 2785681536 [Version] 1048832 [Id] LinuxEditor(16,192.168.0.2) [Debug] 1 [PackageName] LinuxEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
 
 [Physics::Module] Initialized MultithreadedJobDispatcher with 19 workers.
-Refreshing native plugins compatible for Editor in 2.19 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 2.27 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2022.3.23f1 (dbb3f7c5b5c6)
 [Subsystems] Discovering subsystems at path /home/chiral/Unity/Hub/Editor/2022.3.23f1/Editor/Data/Resources/UnitySubsystems
@@ -77,7 +77,7 @@ Initialize engine version: 2022.3.23f1 (dbb3f7c5b5c6)
 GLX Extensions: GLX_ARB_get_proc_address GLX_ARB_multisample GLX_EXT_visual_info GLX_EXT_visual_rating GLX_EXT_import_context GLX_SGI_video_sync GLX_SGIX_fbconfig GLX_SGIX_pbuffer GLX_SGI_swap_control GLX_EXT_swap_control GLX_EXT_swap_control_tear GLX_EXT_buffer_age GLX_ARB_create_context GLX_ARB_create_context_profile GLX_NV_float_buffer GLX_ARB_fbconfig_float GLX_EXT_texture_from_pixmap GLX_EXT_framebuffer_sRGB GLX_NV_copy_image GLX_EXT_create_context_es_profile GLX_EXT_create_context_es2_profile GLX_ARB_create_context_no_error GLX_ARB_create_context_robustness GLX_NV_delay_before_swap GLX_EXT_stereo_tree GLX_ARB_context_flush_control GLX_NV_robustness_video_memory_purge GLX_NV_multigpu_context 
 Renderer: NVIDIA GeForce RTX 3060 Laptop GPU/PCIe/SSE2
 Vendor:   NVIDIA Corporation
-Version:  4.5.0 NVIDIA 550.67
+Version:  4.5.0 NVIDIA 550.76
 GLES:     0
  GL_AMD_multi_draw_indirect GL_AMD_seamless_cubemap_per_texture GL_AMD_vertex_shader_viewport_index GL_AMD_vertex_shader_layer GL_ARB_arrays_of_arrays GL_ARB_base_instance GL_ARB_bindless_texture GL_ARB_blend_func_extended GL_ARB_buffer_storage GL_ARB_clear_buffer_object GL_ARB_clear_texture GL_ARB_clip_control GL_ARB_color_buffer_float GL_ARB_compressed_texture_pixel_storage GL_ARB_conservative_depth GL_ARB_compute_shader GL_ARB_compute_variable_group_size GL_ARB_conditional_render_inverted GL_ARB_copy_buffer GL_ARB_copy_image GL_ARB_cull_distance GL_ARB_debug_output GL_ARB_depth_buffer_float GL_ARB_depth_clamp GL_ARB_depth_texture GL_ARB_derivative_control GL_ARB_direct_state_access GL_ARB_draw_buffers GL_ARB_draw_buffers_blend GL_ARB_draw_indirect GL_ARB_draw_elements_base_vertex GL_ARB_draw_instanced GL_ARB_enhanced_layouts GL_ARB_ES2_compatibility GL_ARB_ES3_compatibility GL_ARB_ES3_1_compatibility GL_ARB_ES3_2_compatibility GL_ARB_explicit_attrib_location GL_ARB_explicit_uniform_location GL_ARB_fragmen
 t_coord_conventions GL_ARB_fragment_layer_viewport GL_ARB_fragment_program GL_ARB_fragment_program_shadow GL_ARB_fragment_shader GL_ARB_fragment_shader_interlock GL_ARB_framebuffer_no_attachments GL_ARB_framebuffer_object GL_ARB_framebuffer_sRGB GL_ARB_geometry_shader4 GL_ARB_get_program_binary GL_ARB_get_texture_sub_image GL_ARB_gl_spirv GL_ARB_gpu_shader5 GL_ARB_gpu_shader_fp64 GL_ARB_gpu_shader_int64 GL_ARB_half_float_pixel GL_ARB_half_float_vertex GL_ARB_imaging GL_ARB_indirect_parameters GL_ARB_instanced_arrays GL_ARB_internalformat_query GL_ARB_internalformat_query2 GL_ARB_invalidate_subdata GL_ARB_map_buffer_alignment GL_ARB_map_buffer_range GL_ARB_multi_bind GL_ARB_multi_draw_indirect GL_ARB_multisample GL_ARB_multitexture GL_ARB_occlusion_query GL_ARB_occlusion_query2 GL_ARB_parallel_shader_compile GL_ARB_pipeline_statistics_query GL_ARB_pixel_buffer_object GL_ARB_point_parameters GL_ARB_point_sprite GL_ARB_polygon_offset_clamp GL_ARB_post_depth_coverage GL_ARB_program_interface_query GL_ARB_provoki
@@ -90,51 +90,51 @@ blend_equation_advanced_coherent GL_NVX_blend_equation_advanced_multi_draw_buffe
 der_passthrough GL_NV_gpu_program4 GL_NV_internalformat_sample_query GL_NV_gpu_program4_1 GL_NV_gpu_program5 GL_NV_gpu_program5_mem_extended GL_NV_gpu_program_fp64 GL_NV_gpu_shader5 GL_NV_half_float GL_NV_light_max_exponent GL_NV_memory_attachment GL_NV_mesh_shader GL_NV_multisample_coverage GL_NV_multisample_filter_hint GL_NV_occlusion_query GL_NV_packed_depth_stencil GL_NV_parameter_buffer_object GL_NV_parameter_buffer_object2 GL_NV_path_rendering GL_NV_path_rendering_shared_edge GL_NV_pixel_data_range GL_NV_point_sprite GL_NV_primitive_restart GL_NV_primitive_shading_rate GL_NV_query_resource GL_NV_query_resource_tag GL_NV_register_combiners GL_NV_register_combiners2 GL_NV_representative_fragment_test GL_NV_sample_locations GL_NV_sample_mask_override_coverage GL_NV_scissor_exclusive GL_NV_shader_atomic_counters GL_NV_shader_atomic_float GL_NV_shader_atomic_float64 GL_NV_shader_atomic_fp16_vector GL_NV_shader_atomic_int64 GL_NV_shader_buffer_load GL_NV_shader_storage_buffer_object GL_NV_shader_subgroup_par
 titioned GL_NV_shader_texture_footprint GL_NV_shading_rate_image GL_NV_stereo_view_rendering GL_NV_texgen_reflection GL_NV_texture_barrier GL_NV_texture_compression_vtc GL_NV_texture_dirty_tile_map GL_NV_texture_env_combine4 GL_NV_texture_multisample GL_NV_texture_rectangle GL_NV_texture_rectangle_compressed GL_NV_texture_shader GL_NV_texture_shader2 GL_NV_texture_shader3 GL_NV_transform_feedback GL_NV_transform_feedback2 GL_NV_uniform_buffer_unified_memory GL_NV_uniform_buffer_std430_layout GL_NV_vdpau_interop GL_NV_vdpau_interop2 GL_NV_vertex_array_range GL_NV_vertex_array_range2 GL_NV_vertex_attrib_integer_64bit GL_NV_vertex_buffer_unified_memory GL_NV_vertex_program GL_NV_vertex_program1_1 GL_NV_vertex_program2 GL_NV_vertex_program2_option GL_NV_vertex_program3 GL_NV_viewport_array2 GL_NV_viewport_swizzle GL_NVX_conditional_render GL_NV_gpu_multicast GL_NVX_progress_fence GL_NVX_gpu_memory_info GL_NVX_nvenc_interop GL_NV_shader_thread_group GL_NV_shader_thread_shuffle GL_KHR_blend_equation_advanced GL_KH
 R_blend_equation_advanced_coherent GL_OVR_multiview GL_OVR_multiview2 GL_SGIS_generate_mipmap GL_SGIS_texture_lod GL_SGIX_depth_texture GL_SGIX_shadow GL_SUN_slice_accum
-OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle -1752432328
+OPENGL LOG: Creating OpenGL 4.5 graphics device ; Context level  <OpenGL 4.5> ; Context handle -1196072568
 Initialize mono
 Mono path[0] = '/home/chiral/Unity/Hub/Editor/2022.3.23f1/Editor/Data/Managed'
 Mono path[1] = '/home/chiral/Unity/Hub/Editor/2022.3.23f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-linux'
 Mono config path = '/home/chiral/Unity/Hub/Editor/2022.3.23f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56745
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56788
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /home/chiral/Unity/Hub/Editor/2022.3.23f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
 Register platform support module: /home/chiral/Unity/Hub/Editor/2022.3.23f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
-Registered in 0.003524 seconds.
-- Loaded All Assemblies, in  0.204 seconds
+Registered in 0.003429 seconds.
+- Loaded All Assemblies, in  0.206 seconds
 Native extension for LinuxStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.193 seconds
-Domain Reload Profiling: 397ms
+- Finished resetting the current domain, in  0.203 seconds
+Domain Reload Profiling: 409ms
 	BeginReloadAssembly (45ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (0ms)
+		CreateAndSetChildDomain (1ms)
 	RebuildCommonClasses (24ms)
 	RebuildNativeTypeToScriptingClass (5ms)
 	initialDomainReloadingComplete (38ms)
-	LoadAllAssembliesAndSetupDomain (92ms)
+	LoadAllAssembliesAndSetupDomain (94ms)
 		LoadAssemblies (45ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (91ms)
-			TypeCache.Refresh (90ms)
-				TypeCache.ScanAssembly (82ms)
+		AnalyzeDomain (93ms)
+			TypeCache.Refresh (92ms)
+				TypeCache.ScanAssembly (84ms)
 			ScanForSourceGeneratedMonoScriptInfo (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (193ms)
+	FinalizeReload (204ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (150ms)
+		SetupLoadedEditorAssemblies (159ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (6ms)
-			SetLoadedEditorAssemblies (4ms)
+			SetLoadedEditorAssemblies (5ms)
 			RefreshPlugins (0ms)
 			BeforeProcessingInitializeOnLoad (1ms)
-			ProcessInitializeOnLoadAttributes (104ms)
-			ProcessInitializeOnLoadMethodAttributes (34ms)
+			ProcessInitializeOnLoadAttributes (111ms)
+			ProcessInitializeOnLoadMethodAttributes (36ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -142,8 +142,8 @@ Domain Reload Profiling: 397ms
 ========================================================================
 Worker process is ready to serve import requests
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.387 seconds
-Refreshing native plugins compatible for Editor in 1.17 ms, found 1 plugins.
+- Loaded All Assemblies, in  0.398 seconds
+Refreshing native plugins compatible for Editor in 1.18 ms, found 1 plugins.
 Native extension for LinuxStandalone target not found
 Native extension for WebGL target not found
 Package Manager log level set to [2]
@@ -151,47 +151,47 @@ Package Manager log level set to [2]
 [Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
 [Package Manager] Cannot connect to Unity Package Manager local server
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.464 seconds
-Domain Reload Profiling: 850ms
-	BeginReloadAssembly (72ms)
+- Finished resetting the current domain, in  0.491 seconds
+Domain Reload Profiling: 889ms
+	BeginReloadAssembly (74ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (3ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (15ms)
+		CreateAndSetChildDomain (16ms)
 	RebuildCommonClasses (22ms)
 	RebuildNativeTypeToScriptingClass (5ms)
-	initialDomainReloadingComplete (29ms)
-	LoadAllAssembliesAndSetupDomain (257ms)
-		LoadAssemblies (144ms)
+	initialDomainReloadingComplete (28ms)
+	LoadAllAssembliesAndSetupDomain (268ms)
+		LoadAssemblies (149ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (145ms)
-			TypeCache.Refresh (119ms)
-				TypeCache.ScanAssembly (108ms)
+		AnalyzeDomain (152ms)
+			TypeCache.Refresh (125ms)
+				TypeCache.ScanAssembly (114ms)
 			ScanForSourceGeneratedMonoScriptInfo (18ms)
-			ResolveRequiredComponents (7ms)
-	FinalizeReload (465ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (492ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (340ms)
+		SetupLoadedEditorAssemblies (356ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (4ms)
 			SetLoadedEditorAssemblies (4ms)
 			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (51ms)
-			ProcessInitializeOnLoadAttributes (218ms)
-			ProcessInitializeOnLoadMethodAttributes (59ms)
+			BeforeProcessingInitializeOnLoad (53ms)
+			ProcessInitializeOnLoadAttributes (233ms)
+			ProcessInitializeOnLoadMethodAttributes (60ms)
 			AfterProcessingInitializeOnLoad (2ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (5ms)
 Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
-Refreshing native plugins compatible for Editor in 1.17 ms, found 1 plugins.
+Refreshing native plugins compatible for Editor in 1.15 ms, found 1 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5646 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 94 unused Assets / (477.5 KB). Loaded Objects now: 6099.
+Unloading 5648 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 94 unused Assets / (472.4 KB). Loaded Objects now: 6102.
 Memory consumption went from 202.7 MB to 202.3 MB.
-Total: 4.724670 ms (FindLiveObjects: 0.352874 ms CreateObjectMapping: 0.212677 ms MarkObjects: 3.646149 ms  DeleteObjects: 0.511925 ms)
+Total: 6.047793 ms (FindLiveObjects: 0.347735 ms CreateObjectMapping: 0.213422 ms MarkObjects: 4.665542 ms  DeleteObjects: 0.819809 ms)
 
 AssetImportParameters requested are different than current active one (requested -> active):
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
@@ -207,146 +207,557 @@ AssetImportParameters requested are different than current active one (requested
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 ========================================================================
 Received Import Request.
-  Time since last request: 20797.240920 seconds.
-  path: Assets/TextMesh Pro/Fonts/NanumGothic SDF.asset
-  artifactKey: Guid(991b440db8197b58992165fdec3e522f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Fonts/NanumGothic SDF.asset using Guid(991b440db8197b58992165fdec3e522f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '65443d1c8e62a0321bc905725c987377') in 0.166160 seconds
+  Time since last request: 2399.938033 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_wood_02.png
+  artifactKey: Guid(ec15557db17a41f498c202336cd909e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_wood_02.png using Guid(ec15557db17a41f498c202336cd909e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4e2772f0cba60ce663c431ebe999b8e2') in 0.091336 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 3
 ========================================================================
 Received Import Request.
-  Time since last request: 20.994497 seconds.
-  path: Assets/TextMesh Pro/Fonts/NanumGothic SDF.asset
-  artifactKey: Guid(991b440db8197b58992165fdec3e522f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Fonts/NanumGothic SDF.asset using Guid(991b440db8197b58992165fdec3e522f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9de28c6e7b9cd79dd354889c98f51646') in 0.111182 seconds
+  Time since last request: 0.000012 seconds.
+  path: Assets/Images/userPanel1.png
+  artifactKey: Guid(8d4c4c557dd15856881104aceffbef3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/userPanel1.png using Guid(8d4c4c557dd15856881104aceffbef3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c6c75086caca7795b46a819354eed7e8') in 0.009921 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 3
 ========================================================================
 Received Import Request.
-  Time since last request: 106.062764 seconds.
-  path: Assets/TextMesh Pro/Fonts/GyeonggiTSE SDF.asset
-  artifactKey: Guid(461b51fdffdb584cdba735c086daed25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Fonts/GyeonggiTSE SDF.asset using Guid(461b51fdffdb584cdba735c086daed25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ab62723581d937d0174d7ffbf144d8d') in 0.094817 seconds
+  Time since last request: 23.560113 seconds.
+  path: Assets/Scenes/SampleScene.unity
+  artifactKey: Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Scenes/SampleScene.unity using Guid(2cda990e2423bbf4892e6590ba056729) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ca54850155902851ec1c862133582d69') in 0.000661 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 0
 ========================================================================
 Received Import Request.
-  Time since last request: 109.406502 seconds.
-  path: Assets/TextMesh Pro/Fonts/GyeonggiTSE SDF.asset
-  artifactKey: Guid(461b51fdffdb584cdba735c086daed25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Fonts/GyeonggiTSE SDF.asset using Guid(461b51fdffdb584cdba735c086daed25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '139debf6278fd8ec840d188bc6c839cd') in 0.108864 seconds
+  Time since last request: 39.799900 seconds.
+  path: Assets/Resources/Prefabs/userCanvas.prefab
+  artifactKey: Guid(6f01f3777a6b2867782012b25f7c7033) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/userCanvas.prefab using Guid(6f01f3777a6b2867782012b25f7c7033) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6041aa8a80e83d8dc776a0b602664ea7') in 0.096299 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 49
 ========================================================================
 Received Import Request.
-  Time since last request: 12.200833 seconds.
-  path: Assets/TextMesh Pro/Fonts/GyeonggiTSE SDF.asset
-  artifactKey: Guid(461b51fdffdb584cdba735c086daed25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Fonts/GyeonggiTSE SDF.asset using Guid(461b51fdffdb584cdba735c086daed25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2bb028256d83e304157971400861acfd') in 0.091448 seconds
+  Time since last request: 24.085126 seconds.
+  path: Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/BackgroundImage02.png
+  artifactKey: Guid(6e3335baeff247a47b286f0a8948a7df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/BackgroundImage02.png using Guid(6e3335baeff247a47b286f0a8948a7df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b879f9de151caf98a90bc13c64b781a') in 0.008620 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 5
 ========================================================================
 Received Import Request.
-  Time since last request: 432.087834 seconds.
-  path: Assets/TextMesh Pro/Fonts/GMARKETSANSTTFMEDIUM(CUSTOM).TTF
-  artifactKey: Guid(1ae551fbc11cca4f689628ac83f1f3a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Fonts/GMARKETSANSTTFMEDIUM(CUSTOM).TTF using Guid(1ae551fbc11cca4f689628ac83f1f3a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9879f2026f69ef7804d2ec69c0a709c0') in 0.010517 seconds
+  Time since last request: 0.007475 seconds.
+  path: Assets/Images/buildingPanel_main.png
+  artifactKey: Guid(8c0d1835fbe43f0ebbbc8c4beb4debd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Images/buildingPanel_main.png using Guid(8c0d1835fbe43f0ebbbc8c4beb4debd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd68769b6d8e31a18f1182bf9c22eb3fa') in 0.008901 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 4
+Number of asset objects unloaded after import = 3
 ========================================================================
 Received Import Request.
-  Time since last request: 19.340389 seconds.
-  path: Assets/TextMesh Pro/Fonts/GMARKETSANSTTFMEDIUM(CUSTOM) SDF.asset
-  artifactKey: Guid(69a6737cdb26ef9b7bdf3ea1025157fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Fonts/GMARKETSANSTTFMEDIUM(CUSTOM) SDF.asset using Guid(69a6737cdb26ef9b7bdf3ea1025157fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a52d0488857b2705021d5aafa193a329') in 0.092538 seconds
+  Time since last request: 0.000021 seconds.
+  path: Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_chara_01.png
+  artifactKey: Guid(c2ab6f31701821140a722465e85f3918) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_chara_01.png using Guid(c2ab6f31701821140a722465e85f3918) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93499bad730e8aa1d71c9cf891349245') in 0.052065 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 37
 ========================================================================
 Received Import Request.
-  Time since last request: 11.573499 seconds.
-  path: Assets/TextMesh Pro/Fonts/GMARKETSANSTTFMEDIUM(CUSTOM) SDF.asset
-  artifactKey: Guid(69a6737cdb26ef9b7bdf3ea1025157fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Fonts/GMARKETSANSTTFMEDIUM(CUSTOM) SDF.asset using Guid(69a6737cdb26ef9b7bdf3ea1025157fc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a5eae053189a7beda3e08d74a4890ba4') in 0.087745 seconds
+  Time since last request: 2.919626 seconds.
+  path: Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/BackgroundImage01.png
+  artifactKey: Guid(e969b0c0a2203ee4c846eaf2203e00af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/BackgroundImage01.png using Guid(e969b0c0a2203ee4c846eaf2203e00af) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd91cd00c658535acc62fc58ee3d84c69') in 0.031470 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 19
 ========================================================================
 Received Import Request.
-  Time since last request: 1523.899643 seconds.
-  path: Assets/TextMesh Pro/Fonts/GyeonggiTSE SDF.asset
-  artifactKey: Guid(461b51fdffdb584cdba735c086daed25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Fonts/GyeonggiTSE SDF.asset using Guid(461b51fdffdb584cdba735c086daed25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5c3532dd72b842c2583f493e9bca8a36') in 0.116727 seconds
+  Time since last request: 2.740848 seconds.
+  path: Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_chara_01_c02.png
+  artifactKey: Guid(bbf4523b35709dc4a89339da87486d84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_chara_01_c02.png using Guid(bbf4523b35709dc4a89339da87486d84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b8e1f724535107ca700a786739eb7cf7') in 0.056973 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 37
 ========================================================================
 Received Import Request.
-  Time since last request: 23.691844 seconds.
-  path: Assets/TextMesh Pro/Fonts/GyeonggiTSE SDF.asset
-  artifactKey: Guid(461b51fdffdb584cdba735c086daed25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/TextMesh Pro/Fonts/GyeonggiTSE SDF.asset using Guid(461b51fdffdb584cdba735c086daed25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6087ef4a366b2e23f85ba8a206d275e') in 0.101386 seconds
+  Time since last request: 0.000013 seconds.
+  path: Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_chara_02.png
+  artifactKey: Guid(39cb76c66c061d4409a73136dcd23e30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_chara_02.png using Guid(39cb76c66c061d4409a73136dcd23e30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfad82dc09417e42cb7e49c2eeade5ad') in 0.056760 seconds
 Number of updated asset objects reloaded before import = 0
-Number of asset objects unloaded after import = 6
+Number of asset objects unloaded after import = 37
 ========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.279 seconds
-Refreshing native plugins compatible for Editor in 1.23 ms, found 1 plugins.
-Native extension for LinuxStandalone target not found
-Native extension for WebGL target not found
-[Package Manager] Server::EnsureServerProcessIsRunning -- launch failed, reason: Unity was launched with the -noUpm command-line argument
-[Package Manager] UpmClient::Send -- Unable to send message (not connected to UPM process).
-[Package Manager] Cannot connect to Unity Package Manager local server
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.613 seconds
-Domain Reload Profiling: 890ms
-	BeginReloadAssembly (99ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (7ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (33ms)
-	RebuildCommonClasses (23ms)
-	RebuildNativeTypeToScriptingClass (5ms)
-	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (132ms)
-		LoadAssemblies (154ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (14ms)
-			TypeCache.Refresh (5ms)
-				TypeCache.ScanAssembly (0ms)
-			ScanForSourceGeneratedMonoScriptInfo (0ms)
-			ResolveRequiredComponents (8ms)
-	FinalizeReload (613ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (338ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (4ms)
-			SetLoadedEditorAssemblies (5ms)
-			RefreshPlugins (0ms)
-			BeforeProcessingInitializeOnLoad (72ms)
-			ProcessInitializeOnLoadAttributes (202ms)
-			ProcessInitializeOnLoadMethodAttributes (51ms)
-			AfterProcessingInitializeOnLoad (2ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (9ms)
-Refreshing native plugins compatible for Editor in 1.18 ms, found 1 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 5546 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 57 unused Assets / (458.8 KB). Loaded Objects now: 6150.
-Memory consumption went from 183.5 MB to 183.0 MB.
-Total: 3.341219 ms (FindLiveObjects: 0.271462 ms CreateObjectMapping: 0.183475 ms MarkObjects: 2.608445 ms  DeleteObjects: 0.276886 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-AssetImportParameters requested are different than current active one (requested -> active):
-  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
-  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
-  custom:CustomObjectIndexerAttribute: f3847dcb39c2a616e8d79845aaae36f1 -> 
-  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
-  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
-  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
-  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
-  custom:AudioImporter_EditorPlatform: 2f0ff77a95e0ac474e3e8eeba4e2f7cb -> 
-  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
-  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
-  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+Received Import Request.
+  Time since last request: 0.021755 seconds.
+  path: Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_chara_02_c03.png
+  artifactKey: Guid(8939fc4c92340024ebe0817cf3cc517e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_chara_02_c03.png using Guid(8939fc4c92340024ebe0817cf3cc517e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '94a787796dc26c56ee726ea3179ca3fd') in 0.052399 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 37
+========================================================================
+Received Import Request.
+  Time since last request: 0.000029 seconds.
+  path: Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_chara_03_c02.png
+  artifactKey: Guid(58a66cd733755684c8c6635a293f233b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_chara_03_c02.png using Guid(58a66cd733755684c8c6635a293f233b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45580e314aeb419857709f097f6b4b2e') in 0.050897 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 38
+========================================================================
+Received Import Request.
+  Time since last request: 0.001000 seconds.
+  path: Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_enemy_01_1.png
+  artifactKey: Guid(df752b2cbf803d140a3ba55bca3f9e84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_enemy_01_1.png using Guid(df752b2cbf803d140a3ba55bca3f9e84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6ffe360a5dd68c20aef24575bd85ca9e') in 0.045781 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 0.015662 seconds.
+  path: Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_enemy_01_2.png
+  artifactKey: Guid(e22eec3cdeac591469bb3525c5fe8649) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_enemy_01_2.png using Guid(e22eec3cdeac591469bb3525c5fe8649) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '87752f90c8edd0cfa54b6f9e6de6251d') in 0.037181 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 0.025184 seconds.
+  path: Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_enemy_01_3.png
+  artifactKey: Guid(198d4039526737343a4c94c0fa667e5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Assets/Fantasy Character Pixel Art Pack1/Resources/dot_enemy_01_3.png using Guid(198d4039526737343a4c94c0fa667e5a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c943c084d513cc92c990b44f341dd211') in 0.030106 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 31
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_box_02.png
+  artifactKey: Guid(f05f0107ebaf50e49b05f1725ca71cad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_box_02.png using Guid(f05f0107ebaf50e49b05f1725ca71cad) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b4ad4b2330ac5ae25bd9da6ae63d45de') in 0.006372 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_church_01.png
+  artifactKey: Guid(7fcac454df2bee24481107af308963b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_church_01.png using Guid(7fcac454df2bee24481107af308963b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0a32670437998f8836818e940f28af1d') in 0.009580 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.010266 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_fence_02.png
+  artifactKey: Guid(c8eb17dfe939eb04db14d6ccba77454c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_fence_02.png using Guid(c8eb17dfe939eb04db14d6ccba77454c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '92d8b587ad38c80466fbc8dd1631533f') in 0.005277 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000025 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_fence_06.png
+  artifactKey: Guid(76402f9422695c84ebfda1791218a30d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_fence_06.png using Guid(76402f9422695c84ebfda1791218a30d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e14cb7efc33aa53230ecd8717227be8a') in 0.005262 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_fence_05.png
+  artifactKey: Guid(2c010026fe54a8d4ab63ad73441662c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_fence_05.png using Guid(2c010026fe54a8d4ab63ad73441662c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b220ffc9ea79fbf9deb8d1e276c42e5') in 0.005015 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.169022 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_furnace_01.png
+  artifactKey: Guid(a67e7dc40b3503746be8675d51fbee08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_furnace_01.png using Guid(a67e7dc40b3503746be8675d51fbee08) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dd5cf8ef8b8e2bc1b17bc591bf0de132') in 0.006165 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.016468 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_house_06.png
+  artifactKey: Guid(863feb3d57b695e4ea91e219331dcf78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_house_06.png using Guid(863feb3d57b695e4ea91e219331dcf78) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '941cb3f9683b8526351311a90199bf16') in 0.009088 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_house_05.png
+  artifactKey: Guid(1c3d99ce016a2a8458668c0d91c57da9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_house_05.png using Guid(1c3d99ce016a2a8458668c0d91c57da9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8bef328ff628962d2b3c4033328c34ea') in 0.006258 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.013016 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_plant_a_01.png
+  artifactKey: Guid(abc358cd78b8a584ba2881b250253f8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_plant_a_01.png using Guid(abc358cd78b8a584ba2881b250253f8d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aebb11663edfc5ee4d1d561d7f0e68d8') in 0.008064 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_plant_a_05.png
+  artifactKey: Guid(1851ee87491938a428a527e7204e6c98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_plant_a_05.png using Guid(1851ee87491938a428a527e7204e6c98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1a0360e0ea62c1b75080c9a198525ff5') in 0.006161 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_plant_b_02.png
+  artifactKey: Guid(ef3f9e780a2ea8f479f905ac4fdf27fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-object_plant_b_02.png using Guid(ef3f9e780a2ea8f479f905ac4fdf27fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ece974e666ee4dac61400a0a3357f3b6') in 0.007051 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-overlay_grass_c_00.png
+  artifactKey: Guid(f5bb8afd81faae04bb9ae46ba985c85c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-overlay_grass_c_00.png using Guid(f5bb8afd81faae04bb9ae46ba985c85c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68c8a970f509963fb5e0cc904294b4b2') in 0.006258 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-overlay_grass_c_02.png
+  artifactKey: Guid(3697023e39ca4f04fa56a38987f6632b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-overlay_grass_c_02.png using Guid(3697023e39ca4f04fa56a38987f6632b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8fe306f7098729613247770ee2fb9650') in 0.006644 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-overlay_grass_d_18.png
+  artifactKey: Guid(2a5bef8c90bf8a643bfe5ad3dfcec8d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-overlay_grass_d_18.png using Guid(2a5bef8c90bf8a643bfe5ad3dfcec8d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '536be9d6d53740c85c129255c20162d1') in 0.007460 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-overlay_grass_d_16.png
+  artifactKey: Guid(dd6e86cd5122473468a5e2558a609d19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-overlay_grass_d_16.png using Guid(dd6e86cd5122473468a5e2558a609d19) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd7b48f66172291207b1a99702b380169') in 0.007797 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_01_line_05.png
+  artifactKey: Guid(0600dfefd44336f4f845c73cdecf1fee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_01_line_05.png using Guid(0600dfefd44336f4f845c73cdecf1fee) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '76055866cf7249180811eddfcfdab9ba') in 0.005630 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000010 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_01_line_07.png
+  artifactKey: Guid(2fedd73f4f98d6a4eb2d78440542ff6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_01_line_07.png using Guid(2fedd73f4f98d6a4eb2d78440542ff6a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ab5e62c8e68e49e1b42151f3f094231') in 0.006047 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_bridge_log_02.png
+  artifactKey: Guid(4ead9235b3a92c3439b0f755f350c1ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_bridge_log_02.png using Guid(4ead9235b3a92c3439b0f755f350c1ff) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9f1f0539f9609f9f3a5ca0bc09e9ee36') in 0.005878 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_02.png
+  artifactKey: Guid(bde40df3dc7c6354ebe779b38cfc77e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_02.png using Guid(bde40df3dc7c6354ebe779b38cfc77e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3246443af7457144017c9e8746167d2') in 0.007859 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_05.png
+  artifactKey: Guid(a841c8058d5ee8a4bb49fe7b226e958d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_05.png using Guid(a841c8058d5ee8a4bb49fe7b226e958d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56644737ce191d1120a50a92b261899b') in 0.006854 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_01_line_01.png
+  artifactKey: Guid(00ed8d715ac30114aa7483ec400ee5cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_01_line_01.png using Guid(00ed8d715ac30114aa7483ec400ee5cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7972f9ae5b43b6971ed5f7f310698e80') in 0.006591 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000019 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_03.png
+  artifactKey: Guid(834e199c26f9ca34da9c0bef3e425cd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_brick_03.png using Guid(834e199c26f9ca34da9c0bef3e425cd4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33e979c5af8313abc7c066e2b214d132') in 0.006369 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.020713 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_ground_01.png
+  artifactKey: Guid(ccd269caec02c754face4e84b3493757) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_ground_01.png using Guid(ccd269caec02c754face4e84b3493757) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a05395cb98e01344993e0d94d04c8801') in 0.006108 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_ground_02_half.png
+  artifactKey: Guid(bde6eab2a78f4dc48a28ad53412b5c37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_ground_02_half.png using Guid(bde6eab2a78f4dc48a28ad53412b5c37) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f63d9eeb286b9476ab7778b7c1097472') in 0.006020 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000067 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_ground_03_half.png
+  artifactKey: Guid(36dc93fc85efcf849af58b1bc097a719) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_ground_03_half.png using Guid(36dc93fc85efcf849af58b1bc097a719) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '09bcf940183459cb02ba776aefc89671') in 0.005857 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.038802 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_09.png
+  artifactKey: Guid(e1161e9f7e473a04ea28ea4549a24714) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_09.png using Guid(e1161e9f7e473a04ea28ea4549a24714) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1142b7f672b7731480253a9ddc1f100e') in 0.005527 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000021 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_14.png
+  artifactKey: Guid(9760f559d2ccca34585a5e7375477c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_14.png using Guid(9760f559d2ccca34585a5e7375477c10) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1bfc09b8af57b1e1e65dde4ea153f29') in 0.005634 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_40.png
+  artifactKey: Guid(ce81a3d60111a444ea2ba9e5218cc406) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_40.png using Guid(ce81a3d60111a444ea2ba9e5218cc406) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '07dc1e9db0e39ac9dc82563d5d11839b') in 0.005878 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_39.png
+  artifactKey: Guid(9b2ca001ea9070d4c9ecb5b74ed588e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_39.png using Guid(9b2ca001ea9070d4c9ecb5b74ed588e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0f74bce4ac5193761699dfd8d318f167') in 0.006417 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_12.png
+  artifactKey: Guid(a7f66171e9183fa4d91e8d7fdd25523e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_12.png using Guid(a7f66171e9183fa4d91e8d7fdd25523e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'da4546c10440280e51aaa526e0586931') in 0.006007 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_47.png
+  artifactKey: Guid(30a7df88898ab5141a8005c20b2fe1cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_47.png using Guid(30a7df88898ab5141a8005c20b2fe1cc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d718269bd5439b073a9af5136584ff5') in 0.005755 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_rampart_02.png
+  artifactKey: Guid(a29f8275d250f5e4d8e43ad6a902face) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_rampart_02.png using Guid(a29f8275d250f5e4d8e43ad6a902face) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '01c74f4f67d0089773dbf845fb2f9b91') in 0.007365 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_stone_07.png
+  artifactKey: Guid(9c3356a69fd11a94c8c76e09e2bdbb52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_stone_07.png using Guid(9c3356a69fd11a94c8c76e09e2bdbb52) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e0c892c78c09e24b0ca01937f13ad04a') in 0.005905 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000009 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_37.png
+  artifactKey: Guid(4c25c7bb620ddff47a4082d240ca1e1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_37.png using Guid(4c25c7bb620ddff47a4082d240ca1e1b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f716b1baa75e130698bb875a270b47f2') in 0.005031 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_stone_08.png
+  artifactKey: Guid(9a76ccbd36f88204187b9e1186a6bf9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_stone_08.png using Guid(9a76ccbd36f88204187b9e1186a6bf9b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '39265521d21defc03bf65701cac05695') in 0.005809 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_36.png
+  artifactKey: Guid(9a00cc0c4e175ad45a074461e86241f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_36.png using Guid(9a00cc0c4e175ad45a074461e86241f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '066229f8fcd8df58476c583a5c73d0d1') in 0.005338 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_sand_01.png
+  artifactKey: Guid(9105b73d55fe95c488af26adaf3b746b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_sand_01.png using Guid(9105b73d55fe95c488af26adaf3b746b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '31775c9ab76119f9311f2367e88dfb2e') in 0.006666 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000010 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_09.png
+  artifactKey: Guid(b62b5d4d2b2866e489bad8e7557b923e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_09.png using Guid(b62b5d4d2b2866e489bad8e7557b923e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a64c62f47dc6fac1dccfe856a2f8b25c') in 0.005881 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000009 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_30.png
+  artifactKey: Guid(47737159a1e8bf545b246be6de7e7a65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_30.png using Guid(47737159a1e8bf545b246be6de7e7a65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7548c5b589856319d5d1ec815e90eb84') in 0.006450 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_34.png
+  artifactKey: Guid(2a646b83f8f615e48ac64dc7b669c4a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_34.png using Guid(2a646b83f8f615e48ac64dc7b669c4a3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78ffafcec6b92f355ea62139b84705ef') in 0.005216 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000028 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_14.png
+  artifactKey: Guid(484af53db87a006439cd47ef691bd567) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_14.png using Guid(484af53db87a006439cd47ef691bd567) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '706c766d6b3d82ebb6139611f28f06b6') in 0.005308 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000010 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_07.png
+  artifactKey: Guid(883aaa701d36e30499b71eb76d3517e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_07.png using Guid(883aaa701d36e30499b71eb76d3517e2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7b9948da5d3ab8603a310e7ddcdfb014') in 0.005250 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000008 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_12.png
+  artifactKey: Guid(e6f07bc8e43e6fe498a84276aea44da3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_12.png using Guid(e6f07bc8e43e6fe498a84276aea44da3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7c75c1861bb682c7735b57ea30d5d160') in 0.005193 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000010 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_27.png
+  artifactKey: Guid(301a0d11ceb31e2479c56a779750c42c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_27.png using Guid(301a0d11ceb31e2479c56a779750c42c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a93c67fe4425f166ce0b978e743d7d61') in 0.005613 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000009 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_06.png
+  artifactKey: Guid(4e446a7c7573f6747be0bab8affa5f65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_06.png using Guid(4e446a7c7573f6747be0bab8affa5f65) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2eeb9306d0f9c41faea53624779dd2ab') in 0.006137 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_24.png
+  artifactKey: Guid(054fed751ffcb7d4687f622325a897fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_24.png using Guid(054fed751ffcb7d4687f622325a897fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e99d9ca0ef22a7e509c9e3e1257aec73') in 0.006291 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000010 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_35.png
+  artifactKey: Guid(55c0413799514684aaecb53afa8949f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_lava_35.png using Guid(55c0413799514684aaecb53afa8949f9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '006ff8d5c2bf13bd557e3afaaf05dbc7') in 0.005578 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000009 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_stone_04.png
+  artifactKey: Guid(4911b630138080b44ad3f674f7e49e79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_stone_04.png using Guid(4911b630138080b44ad3f674f7e49e79) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd205e0610a62cae37a6dcb22c9d63bed') in 0.006481 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_11.png
+  artifactKey: Guid(db9fcec218a85c9499083f1556d3a7d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_11.png using Guid(db9fcec218a85c9499083f1556d3a7d2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a918925120bb0278cea82448245b3c7b') in 0.006191 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_31.png
+  artifactKey: Guid(58d4f04078b8e964fb58a218eb3fade1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_31.png using Guid(58d4f04078b8e964fb58a218eb3fade1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de975fdee40f90d955b6ba7c2f348653') in 0.005775 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000011 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_06.png
+  artifactKey: Guid(0e4e898825d996f40bf6426e6f5becc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_06.png using Guid(0e4e898825d996f40bf6426e6f5becc6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '95b51e54f9835141a5f2c94b95d92cf2') in 0.005376 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.021657 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_41.png
+  artifactKey: Guid(678a3716f1852344db47de5c880d96d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_41.png using Guid(678a3716f1852344db47de5c880d96d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8426cc2a37a12d5fa4a9883bd1001b4b') in 0.005355 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_43.png
+  artifactKey: Guid(5f3f4772b4f0ed34d935a03c2c687c85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_43.png using Guid(5f3f4772b4f0ed34d935a03c2c687c85) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f47ccd688c4f3fd6422f42a091b31bb1') in 0.006044 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_47.png
+  artifactKey: Guid(48ae8477663899f4090d803940cc8d0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Mocapot/Fantasy Tileset/Sprites/isometric-tile_water_deep_47.png using Guid(48ae8477663899f4090d803940cc8d0c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'da30c4d13562df09e216860b0f71babf') in 0.005494 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 125, details: Operation aborted.
+AssetImportWorker is now disconnected from the server
+Process exiting

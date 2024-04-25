@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,66 +14,75 @@ public class CurrentInfo : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            Debug.Log(string.Format("currentID: {0} / currentChampion: {1}", currentID, currentChampion.champ_name));
+            //Debug.Log(string.Format("currentID: {0} / currentChampion: {1}", currentID, currentChampion.champ_name));
+            // if (currentChampion.champ_name != "")
+            // {
+            //     setUserPanel();
+            // }
+        }
+        else
+        {
+            string _id;
+            //Debug.Log(Application.absoluteURL);
+            //var _cookiesRes = GetId();
+            //while (_cookiesRes.MoveNext())
+            //{
+            //    Debug.Log(_cookiesRes.Current.ToString());
+
+                //_id = _cookiesRes.Current.ToString();
+            //}
+            _id = "dozosos";
+
+            currentID = _id;
+            StartCoroutine(GetUserData());
+            Debug.Log("Next Line of the Start Coroutine...");
+            //var _userData = GetUserData();
+            try
+            {
+                 
+            }
+            catch (NullReferenceException e) 
+            {
+                Debug.Log(e.Data.ToString());
+                GameObject.Find("Canvas").transform.Find("BackGround").transform.Find("Create Champion").gameObject.SetActive(true);
+            }
         }
     }
     void Awake()
     {
-        string _id;
-        //Debug.Log(Application.absoluteURL);
-        //var _cookiesRes = GetId();
-        //while (_cookiesRes.MoveNext())
-        //{
-        //    Debug.Log(_cookiesRes.Current.ToString());
-
-            //_id = _cookiesRes.Current.ToString();
-        //}
-        _id = "dozos";
-
-        currentID = _id;
-        
-        var _userData = GetUserData(); 
-        try
-        {
-            while (_userData.MoveNext())
-            {
-                Debug.Log(_userData.Current);
-                if (_userData.Current.ToString().Contains("champ_name")
-                && _userData.Current.ToString().Contains("champ_type")
-                && _userData.Current.ToString().Contains("leadership")
-                && _userData.Current.ToString().Contains("own_castles"))
-                {
-                    currentChampion = JsonUtility.FromJson<ChampionInfo>(_userData.Current.ToString());
-                }
-                if (currentChampion == null)
-                {
-                    GameObject.Find("Canvas").transform.Find("BackGround").transform.Find("Create Champion").gameObject.SetActive(true);
-                }
-            }  
-        }
-        catch (NullReferenceException e) 
-        {
-            Debug.Log(e.Data.ToString());
-            GameObject.Find("Canvas").transform.Find("BackGround").transform.Find("Create Champion").gameObject.SetActive(true);
-        }
+        Debug.Log("Awake");
+        DontDestroyOnLoad(this);
     }
 
     // Update is called once per frame
     void Update()
     {
-        try
-        {
-            if (currentID == null || currentID.Equals(""))
-            {
-                GetId();
-            }
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e.Message);
-            SceneManager.LoadScene(0);
-        }
-        
+        // try
+        // {
+        //     if (currentID == null || currentID.Equals(""))
+        //     {
+        //         GetId();
+        //     }
+        // }
+        // catch (Exception e)
+        // {
+        //     Debug.Log(e.Message);
+        //     SceneManager.LoadScene(0);
+        // }
+    }
+
+    void setUserPanel()
+    {
+        Debug.Log(CurrentInfo.currentChampion.champ_name);
+        Debug.Log(CurrentInfo.currentChampion.champ_type.ToString());
+        var _panel = GameObject.Find("userCanvas").transform.Find("userPanel").gameObject;
+        Debug.Log(_panel.name);
+        var _nameObj = _panel.transform.Find("Champion Name").GetComponent<TMP_Text>();
+        var _typeObj = _panel.transform.Find("Champion Type").GetComponent<TMP_Text>();
+        var _lsObj = _panel.transform.Find("Leadership").GetComponent<TMP_Text>();
+        _nameObj.text = CurrentInfo.currentChampion.champ_name;
+        _typeObj.text = CurrentInfo.currentChampion.champ_type.ToString();
+        _lsObj.text = CurrentInfo.currentChampion.leadership.ToString();
     }
 
     IEnumerator GetId()
@@ -102,6 +111,7 @@ public class CurrentInfo : MonoBehaviour
         //get champ data from server
         using (UnityEngine.Networking.UnityWebRequest webRequest = UnityEngine.Networking.UnityWebRequest.Get(serverURI + "/champ"))
         {
+            //webRequest.SetRequestHeader("Content-Type", "application/json");
             webRequest.SetRequestHeader("Cookie", string.Format("id={0}", CurrentInfo.currentID));
             yield return webRequest.SendWebRequest();
             if (webRequest.result == UnityEngine.Networking.UnityWebRequest.Result.ConnectionError)
@@ -110,9 +120,18 @@ public class CurrentInfo : MonoBehaviour
             }
             else
             {
-                Debug.Log(webRequest.responseCode);
-                Debug.Log(webRequest.downloadHandler.text);
-                yield return webRequest.downloadHandler.text;
+                if (webRequest.isDone)
+                {
+                    Debug.Log(webRequest.responseCode);
+                    byte[] resultRaw = webRequest.downloadHandler.data; //
+                    string result = System.Text.Encoding.Default.GetString(resultRaw); //
+                    currentChampion = JsonUtility.FromJson<ChampionInfo>(result);
+                    Debug.Log(currentChampion.champ_name);
+                }
+                else
+                {
+                    Debug.Log("Error... data couldn't get");
+                }
             }
         }
     }
