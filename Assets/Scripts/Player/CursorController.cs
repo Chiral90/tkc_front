@@ -16,8 +16,8 @@ public class CursorController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CursorMoving();
-        ViewMoving();
+        //CursorMoving();
+        //ViewMoving();
     }
     void CursorMoving()
     {

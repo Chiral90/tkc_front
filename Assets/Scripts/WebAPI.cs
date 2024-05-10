@@ -55,14 +55,14 @@ public struct Api
     IEnumerator Get(string url, Action<UnityWebRequest> callback)
     {
         UnityWebRequest request = UnityWebRequest.Get(url);
-        //request.SetRequestHeader("id", CurrentInfo.currentID);
+        request.SetRequestHeader("Cookie", string.Format("id={0}", CurrentInfo.currentID));
         yield return request.SendWebRequest();
         callback(request);
     }
     IEnumerator Post(string url, WWWForm obj, Action<UnityWebRequest> callback)
     {
         UnityWebRequest request = UnityWebRequest.Post(url, obj);
-        //request.SetRequestHeader("id", CurrentInfo.currentID);
+        request.SetRequestHeader("Cookie", string.Format("id={0}", CurrentInfo.currentID));
         yield return request.SendWebRequest();
         callback(request);
     }

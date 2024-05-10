@@ -2,9 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class UIPopup : MonoBehaviour
+public class UIPopup : MonoBehaviour, IDragHandler, IScrollHandler
 {
+    public BuildingInfo data;
     [SerializeField] private GameObject popupCanvas; // 팝업 창의 캔버스
     [SerializeField] private Animator popupAnimator; // 팝업 창의 애니메이터
 
@@ -59,6 +61,25 @@ public class UIPopup : MonoBehaviour
     {
         // 팝업 내 버튼이 클릭되었을 때 실행할 동작을 여기에 작성합니다.
         Debug.Log("Inside popup...");
+    }
+    public void OnDrag(PointerEventData eventData)
+    {
+        // Debug.Log("OnDrag");
+        // Debug.Log(string.Format("transform: {0}, eventData: {1}", transform.position, eventData.position));
+        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+  
+        if (Physics.Raycast(ray, out hit))
+        {
+            Debug.Log(hit.transform.name);
+        }
+        transform.position = eventData.position;
+    }
+
+    public void OnScroll(PointerEventData eventData)
+    {
+        // throw new NotImplementedException();
+        Debug.Log("On Scroll");
     }
 }
 

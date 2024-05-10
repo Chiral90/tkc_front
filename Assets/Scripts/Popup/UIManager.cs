@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -45,17 +46,51 @@ public class UIManager : MonoBehaviour
         {
             if (!data.IsUnityNull())
             {
+                popup.data = data;
                 Debug.Log(string.Format("current champ_name : {0} / castellan : {1} / equal? : {2}", CurrentInfo.currentChampion.champ_name, data.castellan, data.castellan.Equals(CurrentInfo.currentChampion.champ_name)));
+                // set building datas
                 var components = popup.gameObject.GetComponentsInChildren<TextMeshProUGUI>();
                 foreach (var c in components)
                 {
+                    Debug.Log(c.name);
                     if (c.gameObject.name == "Building Name") { c.text = data.buildingName; }
                     if (c.gameObject.name == "Building Population") { c.text = data.population.ToString(); }
                     if (c.gameObject.name == "Building Castellan") { c.text = data.castellan; }
                 }
-                if (data.castellan.Equals(CurrentInfo.currentChampion.champ_name))
+                Debug.Log(string.Join(',', data.stationed));
+                GameObject _button = popup.gameObject.transform.Find("Enter Building").gameObject;
+                
+                if (data.team == CurrentInfo.currentChampion.team)
                 {
+                    if (data.stationed.Contains(CurrentInfo.currentChampion.champ_name))
+                    {
+                        _button.SetActive(false);
+                    }
+                    else
+                    {
+                        _button.GetComponentInChildren<TextMeshProUGUI>().text = "진입";
+                        _button.SetActive(true);
+                    }
                     popup.gameObject.transform.Find("Building Panel Options").gameObject.SetActive(true);
+                }
+                else
+                {
+                    if (data.team == 0)
+                    {
+                        _button.GetComponentInChildren<TextMeshProUGUI>().text = "점령";
+                    }
+                    else
+                    {
+                        if (CurrentInfo.currentChampion.champ_type == 3)
+                        {
+                            _button.GetComponentInChildren<TextMeshProUGUI>().text = "잠입";
+                        }
+                        else
+                        {
+                            _button.GetComponentInChildren<TextMeshProUGUI>().text = "침입";
+                        }
+                    }
+                    _button.SetActive(true);
                 }
             }
             else
