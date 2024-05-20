@@ -1,8 +1,7 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -32,7 +31,7 @@ public class ButtonAction : MonoBehaviour
         else
             _instance = this;
 
-        DontDestroyOnLoad(this);
+        // DontDestroyOnLoad(this);
     }
     #endregion
     Api api;
@@ -46,6 +45,8 @@ public class ButtonAction : MonoBehaviour
     }
     public void startGame()
     {
+        Debug.Log("1 : " + this.gameObject.activeInHierarchy);
+        Debug.Log("2 : " + this.gameObject.activeSelf);
         Debug.Log("Start Game : " + CurrentInfo.currentChampion.champ_name);
         SceneManager.LoadScene("SampleScene");
     }
@@ -68,19 +69,19 @@ public class ButtonAction : MonoBehaviour
         //validate name, type
         ChampionInfo _champ = new ChampionInfo();
         _champ.createNewChampion(_name, _type, _team);
-        string _champStr = JsonUtility.ToJson(_champ);
-        Debug.Log(_champStr);
+        // string _champStr = JsonUtility.ToJson(_champ);
+        // Debug.Log(_champStr);
         api.routePath = "/champ/create";
         WWWForm _champWWW = _champ.createWWWForm();
-        StartCoroutine(api.PostRequest(_champWWW, onSuccess: (result) =>
+        var result = StaticCoroutine.StartStaticCoroutine(api.PostRequest(_champWWW, onSuccess: (result) =>
         {
-            Debug.Log(result);
-            GameObject _button = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-            _button.transform.parent.parent.Find("Create Champion").gameObject.SetActive(false);
+            // Debug.Log(result);
+            GameObject _button = EventSystem.current.currentSelectedGameObject;
+            GameObject.Find("Canvas").transform.Find("BackGround").Find("Create Champion").gameObject.SetActive(false);
             _button.transform.parent.gameObject.SetActive(false);
         }, onFailure: (error) =>
         {
-            Debug.Log(error);
+            Debug.LogError(error);
         }));
     }
 
@@ -91,54 +92,68 @@ public class ButtonAction : MonoBehaviour
 
     public void openChamplist()
     {
-        GameObject _button = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-        GameObject _subPanel = _button.transform.parent.gameObject.transform.parent.Find("Building Panel Sub").gameObject;
-        Debug.Log(string.Format("subPanel: {0}", _subPanel.activeSelf));
-        if (!_subPanel.activeSelf)
+        try
         {
-            _subPanel.SetActive(true);
-        }
-        _subPanel.transform.Find("Building Detail Panel").gameObject.SetActive(false);
-        _subPanel.transform.Find("Building Champ List Panel").gameObject.SetActive(true);
-        // print champion list
-        UIPopup _mainPanelData = _subPanel.transform.parent.gameObject.GetComponent<UIPopup>();
-        GameObject _content = _subPanel.transform.Find("Building Champ List Panel").transform.Find("Building Stationed Champions").transform.Find("Viewport").transform.Find("Content").gameObject;
-        GameObject champData = _content.transform.Find("champ1").gameObject;
-        api.routePath = "/champ/champs/" + String.Join(",", _mainPanelData.data.stationed);
-        Debug.Log("/champ/champs/" + String.Join(",", _mainPanelData.data.stationed));
-        StartCoroutine(api.GetRequest(onSuccess: (result) =>
+            Debug.Log("1 : " + this.gameObject.activeInHierarchy);
+            Debug.Log("2 : " + this.gameObject.activeSelf);
+            GameObject _button = EventSystem.current.currentSelectedGameObject;
+            GameObject _subPanel = _button.transform.parent.gameObject.transform.parent.Find("Building Panel Sub").gameObject;
+            // Debug.Log(string.Format("subPanel: {0}", _subPanel.activeSelf));
+            switchActive(_subPanel);
+            _subPanel.transform.Find("Building Detail Panel").gameObject.SetActive(false);
+            _subPanel.transform.Find("Building Champ List Panel").gameObject.SetActive(true);
+            // print champion list
+            UIPopup _mainPanelData = _subPanel.transform.parent.gameObject.GetComponent<UIPopup>();
+            GameObject _content = _subPanel.transform.Find("Building Champ List Panel").transform.Find("Building Stationed Champions").transform.Find("Viewport").transform.Find("Content").gameObject;
+            GameObject champData = _content.transform.Find("champ").gameObject;
+            int idx = 0;
+            foreach (ChampionInfo c in _mainPanelData.data.stationed)
+            {
+                if (idx == 0)
+                {
+                    champData.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = c.champ_name;
+                    champData.transform.Find("Type").GetComponent<TextMeshProUGUI>().text = c.ChampType;
+                    champData.transform.Find("Leadership").GetComponent<TextMeshProUGUI>().text = c.leadership.ToString();
+                }
+                else
+                {
+                    GameObject _champData = Instantiate(champData, _content.transform);
+                    _champData.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = c.champ_name;
+                    _champData.transform.Find("Type").GetComponent<TextMeshProUGUI>().text = c.ChampType;
+                    _champData.transform.Find("Leadership").GetComponent<TextMeshProUGUI>().text = c.leadership.ToString();
+                }
+                idx++;
+            }
+        } catch (Exception e)
         {
-            var data = result;
-            Debug.Log(data);
-            // do something
-        }, onFailure: (error) =>
-        {
-            Debug.Log(error);
-            // do something
-        }));
-        foreach (var c in _mainPanelData.data.stationed)
-        {
-            //GameObject champData = 
+            Debug.LogError(e);
         }
     }
     public void openDetail()
     {
-        GameObject _button = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-        GameObject _subPanel = _button.transform.parent.gameObject.transform.parent.Find("Building Panel Sub").gameObject;
-        Debug.Log(string.Format("subPanel: {0}", _subPanel.activeSelf));
-        if (!_subPanel.activeSelf)
+        try
         {
-            _subPanel.SetActive(true);
+            Debug.Log("1 : " + this.gameObject.activeInHierarchy);
+            Debug.Log("2 : " + this.gameObject.activeSelf);
+            GameObject _button = EventSystem.current.currentSelectedGameObject;
+            GameObject _subPanel = _button.transform.parent.gameObject.transform.parent.Find("Building Panel Sub").gameObject;
+            // Debug.Log(string.Format("subPanel: {0}", _subPanel.activeSelf));
+            switchActive(_subPanel);
+            _subPanel.transform.Find("Building Champ List Panel").gameObject.SetActive(false);
+            _subPanel.transform.Find("Building Detail Panel").gameObject.SetActive(true);
+            UIPopup _mainPanelData = _subPanel.transform.parent.gameObject.GetComponent<UIPopup>();
+            _subPanel.transform.Find("Building Detail Panel").transform.Find("Building Food").GetComponent<TextMeshProUGUI>().text = _mainPanelData.data.food.ToString();
+            _subPanel.transform.Find("Building Detail Panel").transform.Find("Building Morale").GetComponent<TextMeshProUGUI>().text = _mainPanelData.data.morale.ToString();
+        } catch (Exception e)
+        {
+            Debug.LogError(e);
         }
-        _subPanel.transform.Find("Building Champ List Panel").gameObject.SetActive(false);
-        _subPanel.transform.Find("Building Detail Panel").gameObject.SetActive(true);
-        UIPopup _mainPanelData = _subPanel.transform.parent.gameObject.GetComponent<UIPopup>();
-        _subPanel.transform.Find("Building Detail Panel").transform.Find("Building Food").GetComponent<TextMeshProUGUI>().text = _mainPanelData.data.food.ToString();
-        _subPanel.transform.Find("Building Detail Panel").transform.Find("Building Morale").GetComponent<TextMeshProUGUI>().text = _mainPanelData.data.morale.ToString();
     }
     public void enterBuilding()
     {
-        GameObject _button = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
+        Debug.Log("1 : " + this.gameObject.activeInHierarchy);
+        Debug.Log("2 : " + this.gameObject.activeSelf);
+        GameObject _button = EventSystem.current.currentSelectedGameObject;
         string text = _button.GetComponentInChildren<TextMeshProUGUI>().text;
         string targetName = _button.transform.parent.Find("Building Name").GetComponent<TextMeshProUGUI>().text;
         // 침입
@@ -167,35 +182,93 @@ public class ButtonAction : MonoBehaviour
             // Spy
             Debug.Log("Spy");
         }
+        else if (text.Equals("선택"))
+        {
+            Debug.Log("Select location");
+            updateLocation(targetName);
+            return;
+        }
+        updateDestination(targetName);
         calcDistance(targetName);
+        // try {
+        //     updateDestination(targetName);
+        //     calcDistance(targetName);
+        // } catch (Exception e) {
+        //     Debug.LogError(e);
+        // }
     }
 
-    void siege()
-    {
-        
-    }
     void calcDistance(string targetName)
     {
         // 현재 위치
         string current = CurrentInfo.currentChampion.location;
         // 목표 위치
         string target = targetName;
-        string roadName = current + "To" + target;
-        Debug.Log(roadName);
-        // 거리 계산 / 타일 계산
-        GameObject road = GameObject.Find("Map").transform.Find("Roads").transform.Find(roadName).gameObject;
-        LineRenderer _r = road.GetComponent<LineRenderer>();
-
-        //Get old Position Length
-        Vector3[] newPos = new Vector3[_r.positionCount];
-        //Get old Positions
-        _r.GetPositions(newPos);
-        float len = 0.0f;
-        foreach (var c in newPos)
+        if (!current.Equals(""))
         {
-            Debug.Log(c);
-            len += Vector3.Magnitude(c);
+            string roadName = current + "To" + target;
+            Debug.Log("Select Road: " + roadName);
+            // 거리 계산 / 타일 계산
+            GameObject road = GameObject.Find("Map").transform.Find("Roads").transform.Find(roadName).gameObject;
+            LineRenderer _r = road.GetComponent<LineRenderer>();
+
+            //Get old Position Length
+            Vector3[] newPos = new Vector3[_r.positionCount];
+            //Get old Positions
+            _r.GetPositions(newPos);
+            float len = 0.0f;
+            foreach (var c in newPos)
+            {
+                len += Vector3.Magnitude(c);
+            }
+            // Debug.Log(len);
         }
-        Debug.Log(len);
     }
+    void switchActive(GameObject g)
+    {
+        if (!g.activeInHierarchy)
+        {
+            g.SetActive(true);
+        }
+    }
+    void updateDestination(string destination)
+    {
+        Debug.Log("updateDest");
+        api.routePath = string.Format("/champ/updateDestination/{0}", destination);
+        WWWForm _f = CurrentInfo.currentChampion.createWWWForm();
+        var result = StaticCoroutine.StartStaticCoroutine(api.PostRequest(_f, onSuccess: (result) =>
+        {
+            // do something
+            Debug.Log(result);
+        }, onFailure: (error) =>
+        {
+            // do something
+        }));
+    }
+    void updateLocation(string location)
+    {
+        Debug.Log("updateLoca");
+        api.routePath = string.Format("/champ/updateLocation/{0}", location);
+        WWWForm _f = CurrentInfo.currentChampion.createWWWForm();
+        var result = StaticCoroutine.StartStaticCoroutine(api.PostRequest(_f, onSuccess: (result) =>
+        {
+            // do something
+            Debug.Log(result);
+        }, onFailure: (error) =>
+        {
+            // do something
+        }));
+    }
+    // IEnumerator updateDest(string destination)
+    // {
+    //     Debug.Log("updateDest");
+    //     WWWForm _f = CurrentInfo.currentChampion.createWWWForm();
+    //     yield return StaticCoroutine.StartPostStaticCoroutine(string.Format("/champ/updateDestination/{0}", destination), _f);
+    // }
+    // IEnumerator updateLoca(string location)
+    // {
+    //     Debug.Log("updateLoca");
+    //     WWWForm _f = CurrentInfo.currentChampion.createWWWForm();
+    //     yield return StaticCoroutine.StartPostStaticCoroutine(string.Format("/champ/updateLocation/{0}", location), _f);
+    // }
 }

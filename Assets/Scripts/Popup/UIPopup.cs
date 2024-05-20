@@ -41,7 +41,7 @@ public class UIPopup : MonoBehaviour, IDragHandler, IScrollHandler
     {
         if (popupCanvas != null)
         {
-            Debug.Log("UIPopup Close Method...");
+            // Debug.Log("UIPopup Close Method...");
             // 팝업 애니메이션 재생 (애니메이션 이벤트로 OnCloseAnimationFinished 호출)
             if (popupAnimator != null)
             {
@@ -60,7 +60,7 @@ public class UIPopup : MonoBehaviour, IDragHandler, IScrollHandler
     public void OnButtonClicked()
     {
         // 팝업 내 버튼이 클릭되었을 때 실행할 동작을 여기에 작성합니다.
-        Debug.Log("Inside popup...");
+        // Debug.Log("Inside popup...");
     }
     public void OnDrag(PointerEventData eventData)
     {
@@ -71,7 +71,7 @@ public class UIPopup : MonoBehaviour, IDragHandler, IScrollHandler
   
         if (Physics.Raycast(ray, out hit))
         {
-            Debug.Log(hit.transform.name);
+            // Debug.Log(hit.transform.name);
         }
         transform.position = eventData.position;
     }
@@ -79,7 +79,7 @@ public class UIPopup : MonoBehaviour, IDragHandler, IScrollHandler
     public void OnScroll(PointerEventData eventData)
     {
         // throw new NotImplementedException();
-        Debug.Log("On Scroll");
+        // Debug.Log("On Scroll");
     }
 }
 

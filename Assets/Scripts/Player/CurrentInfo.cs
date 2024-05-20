@@ -1,15 +1,17 @@
 using System;
 using System.Collections;
 using TMPro;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CurrentInfo : MonoBehaviour
 {
-    public static string serverURI = "http://192.168.0.2:8181";
+    // public static string serverURI = "http://192.168.0.4:8181";
+    public static string serverURI = "http://192.168.0.2:8181";     // v16
     public static string currentID;
     public static ChampionInfo currentChampion;
+    public static TurnInfo currentTurnInfo;
+
     Api api;
 
     #region Singleton
@@ -34,7 +36,7 @@ public class CurrentInfo : MonoBehaviour
         else
             _instance = this;
 
-        DontDestroyOnLoad(this);
+        // DontDestroyOnLoad(this);
     }
     #endregion
     // Start is called before the first frame update
@@ -54,20 +56,9 @@ public class CurrentInfo : MonoBehaviour
             _id = "dozos";
 
             currentID = _id;
-            // StartCoroutine(GetUserData());
-            api.routePath = "/champ";
-            StartCoroutine(api.GetRequest(onSuccess: (result) =>
-            {
-                // do something
-                Debug.Log(result);
-                currentChampion = JsonUtility.FromJson<ChampionInfo>(result);
-                
-            }, onFailure: (error) =>
-            {
-                // do something
-                Debug.Log(error);
-                GameObject.Find("Canvas").transform.Find("BackGround").transform.Find("Create Champion").gameObject.SetActive(true);
-            }));
+            // Debug.Log("CurrentInfo Start");
+            setChampInfo();
+            setCurrentRound();
         }
     }
 
@@ -90,66 +81,54 @@ public class CurrentInfo : MonoBehaviour
 
     void setUserPanel()
     {
-        Debug.Log(CurrentInfo.currentChampion.champ_name);
-        Debug.Log(CurrentInfo.currentChampion.champ_type.ToString());
+        // Debug.Log(currentChampion.champ_name);
+        // Debug.Log(currentChampion.champ_type.ToString());
         var _panel = GameObject.Find("userCanvas").transform.Find("userPanel").gameObject;
-        Debug.Log(_panel.name);
+        // Debug.Log(_panel.name);
         var _nameObj = _panel.transform.Find("Champion Name").GetComponent<TMP_Text>();
         var _typeObj = _panel.transform.Find("Champion Type").GetComponent<TMP_Text>();
         var _lsObj = _panel.transform.Find("Leadership").GetComponent<TMP_Text>();
-        _nameObj.text = CurrentInfo.currentChampion.champ_name;
-        _typeObj.text = CurrentInfo.currentChampion.champ_type.ToString();
-        _lsObj.text = CurrentInfo.currentChampion.leadership.ToString();
+        _nameObj.text = currentChampion.champ_name;
+        _typeObj.text = currentChampion.ChampType;
+        _lsObj.text = currentChampion.leadership.ToString();
     }
-
-    IEnumerator GetId()
+    void setChampInfo()
     {
-        //get id from browser cookies
-        using (UnityEngine.Networking.UnityWebRequest webRequest = UnityEngine.Networking.UnityWebRequest.Get(Application.absoluteURL))
+        api.routePath = "/champ";
+        var result = StaticCoroutine.StartStaticCoroutine(api.GetRequest(onSuccess: (result) =>
         {
-            yield return webRequest.SendWebRequest();
-            if (webRequest.result == UnityEngine.Networking.UnityWebRequest.Result.ConnectionError)
-            {
-
-            } else if (webRequest.GetResponseHeader("id") != null)
-            {
-                currentID = webRequest.GetResponseHeader("id");
-            }
-            else
-            {
-                Debug.Log("else");
-                yield return "";
-            }
-        }
+            // do something
+            currentChampion = JsonUtility.FromJson<ChampionInfo>(result);
+            setUserPanel();
+        }, onFailure: (error) =>
+        {
+            // do something
+            Debug.LogError(error);
+            GameObject.Find("Canvas").transform.Find("BackGround").transform.Find("Create Champion").gameObject.SetActive(true);
+        }));
     }
-
-    IEnumerator GetUserData()
+    void setTurnPanel()
     {
-        //get champ data from server
-        using (UnityEngine.Networking.UnityWebRequest webRequest = UnityEngine.Networking.UnityWebRequest.Get(serverURI + "/champ"))
+        var _panel = GameObject.Find("userCanvas").transform.Find("userPanel").gameObject;
+        var _roundObj = _panel.transform.Find("Round").GetComponent<TMP_Text>();
+        var _turnObj = _panel.transform.Find("Turn").GetComponent<TMP_Text>();
+        var _remainObj = _panel.transform.Find("Remain").GetComponent<TMP_Text>();
+        _roundObj.text = currentTurnInfo.currentRound.ToString();
+        _turnObj.text = currentTurnInfo.currentTurn.ToString();
+        _remainObj.text = currentTurnInfo.getRemain();
+    }
+    void setCurrentRound()
+    {
+        api.routePath = "/getRound";
+        var result = StaticCoroutine.StartStaticCoroutine(api.GetRequest(onSuccess: (result) =>
         {
-            //webRequest.SetRequestHeader("Content-Type", "application/json");
-            webRequest.SetRequestHeader("Cookie", string.Format("id={0}", CurrentInfo.currentID));
-            yield return webRequest.SendWebRequest();
-            if (webRequest.result == UnityEngine.Networking.UnityWebRequest.Result.ConnectionError)
-            {
-
-            }
-            else
-            {
-                if (webRequest.isDone)
-                {
-                    Debug.Log(webRequest.responseCode);
-                    byte[] resultRaw = webRequest.downloadHandler.data; //
-                    string result = System.Text.Encoding.Default.GetString(resultRaw); //
-                    currentChampion = JsonUtility.FromJson<ChampionInfo>(result);
-                    Debug.Log(currentChampion.champ_name);
-                }
-                else
-                {
-                    Debug.Log("Error... data couldn't get");
-                }
-            }
-        }
+            // do something
+            currentTurnInfo = JsonUtility.FromJson<TurnInfo>(result);
+            // Debug.Log(String.Format("Round:{0} / Turn:{1} / StartTime:{2}", currentTurnInfo.currentRound, currentTurnInfo.currentTurn, currentTurnInfo.startTime));
+            setTurnPanel();
+        }, onFailure: (error) =>
+        {
+            // do something
+        }));
     }
 }

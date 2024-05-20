@@ -905,7 +905,7 @@ GameObject:
   - component: {fileID: 6441203297409911143}
   - component: {fileID: 573205448557877766}
   m_Layer: 5
-  m_Name: champ1
+  m_Name: champ
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2210,10 +2210,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    buildingName: 
+    building_name: 
     castellan: 
     team: 0
-    buildingType: 0
+    building_type: 0
     population: 0
     food: 0
     morale: 0
@@ -2281,7 +2281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -32,7 +30,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        // GameObject userCanvasObj = Instantiate(Resources.Load<GameObject>("Prefabs/userCanvas"), GameObject.Find("Main Camera").transform.parent, false);//prefab 적용 시
+        GameObject userCanvasObj = this.transform.Find("userCanvas").gameObject;
+        userCanvasObj.transform.Find("userPanel").gameObject.SetActive(false);
+        Debug.Log("GameManager Start");
+        this.gameObject.SetActive(true);
+        Debug.Log("Start");
     }
 
     // Update is called once per frame

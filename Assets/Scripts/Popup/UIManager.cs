@@ -1,11 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using System.Linq;
-using System;
 
 public class UIManager : MonoBehaviour
 {
@@ -40,7 +36,7 @@ public class UIManager : MonoBehaviour
     }
 
     // 팝업을 엽니다.
-    public void OpenBuildingPopup(UIPopup popup, BuildingInfo? data = null)
+    public void OpenBuildingPopup(UIPopup popup, BuildingInfo data = null)
     {
         if (popup != null)
         {
@@ -48,30 +44,42 @@ public class UIManager : MonoBehaviour
             {
                 popup.data = data;
                 Debug.Log(string.Format("current champ_name : {0} / castellan : {1} / equal? : {2}", CurrentInfo.currentChampion.champ_name, data.castellan, data.castellan.Equals(CurrentInfo.currentChampion.champ_name)));
+                Debug.Log(string.Format("current team : {0} / building team : {1} / equal? : {2}", CurrentInfo.currentChampion.team, data.team, CurrentInfo.currentChampion.team == data.team));
                 // set building datas
                 var components = popup.gameObject.GetComponentsInChildren<TextMeshProUGUI>();
                 foreach (var c in components)
                 {
-                    Debug.Log(c.name);
-                    if (c.gameObject.name == "Building Name") { c.text = data.buildingName; }
+                    if (c.gameObject.name == "Building Name") { c.text = data.building_name; }
                     if (c.gameObject.name == "Building Population") { c.text = data.population.ToString(); }
                     if (c.gameObject.name == "Building Castellan") { c.text = data.castellan; }
                 }
-                Debug.Log(string.Join(',', data.stationed));
+                // Debug.Log(string.Join(',', data.stationed));
                 GameObject _button = popup.gameObject.transform.Find("Enter Building").gameObject;
                 
-                if (data.team == CurrentInfo.currentChampion.team)
+                if (CurrentInfo.currentChampion.team == data.team)
                 {
-                    if (data.stationed.Contains(CurrentInfo.currentChampion.champ_name))
+                    foreach (ChampionInfo c in data.stationed)
                     {
-                        _button.SetActive(false);
-                    }
-                    else
-                    {
-                        _button.GetComponentInChildren<TextMeshProUGUI>().text = "진입";
-                        _button.SetActive(true);
+                        if (c.champ_name.Equals(CurrentInfo.currentChampion.champ_name))
+                        {
+                            Debug.Log("stationed...");
+                            _button.SetActive(false);
+                            break;
+                        }
+                        else
+                        {
+                            Debug.Log("not stationed...");
+                            _button.GetComponentInChildren<TextMeshProUGUI>().text = "진입";
+                            _button.SetActive(true);
+                        }
                     }
                     popup.gameObject.transform.Find("Building Panel Options").gameObject.SetActive(true);
+                }
+                else if (CurrentInfo.currentChampion.location.Equals(""))
+                {
+                    Debug.Log("no location...");
+                    _button.GetComponentInChildren<TextMeshProUGUI>().text = "선택";
+                    _button.SetActive(true);
                 }
                 else
                 {

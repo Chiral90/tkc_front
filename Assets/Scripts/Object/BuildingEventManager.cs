@@ -1,8 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class BuildingEventManager : MonoBehaviour
 {
@@ -178,11 +175,14 @@ public class BuildingEventManager : MonoBehaviour
         {
             var objData = new object();
             api.routePath = "/building/" + target.name;
-            StartCoroutine(api.GetRequest(onSuccess: (result) =>
+            var result = StaticCoroutine.StartStaticCoroutine(api.GetRequest(onSuccess: (result) =>
             {
+                Debug.Log(result);
+                _bInfo = JsonUtility.FromJson<BuildingInfo>(result);
+                Debug.Log(_bInfo.stationed);
                 Canvas _uiCanvas = GameObject.Find("popupCanvas").gameObject.GetComponent<Canvas>();
                 GameObject buildingPopup = Resources.Load<GameObject>("Prefabs/Building Panel");
-                _bInfo = JsonUtility.FromJson<BuildingInfo>(result);
+                
                 GameObject popup = Instantiate(buildingPopup, _uiCanvas.transform, false);//prefab 적용 시
                 popup.name = target.name;
                 UIManager.Instance.OpenBuildingPopup(popup.GetComponentInChildren<UIPopup>(), _bInfo);

@@ -340,7 +340,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 640404811}
+      - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
         m_MethodName: startGame
         m_Mode: 1
@@ -473,7 +473,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 640404811}
+      - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
         m_MethodName: createChampion
         m_Mode: 1
@@ -1241,17 +1241,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
---- !u!114 &640404811 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6796797316537152313, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
-  m_PrefabInstance: {fileID: 640404810}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2431d3a30f1d010ca01fb04b4743c30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &660368373
 GameObject:
   m_ObjectHideFlags: 0
@@ -2871,7 +2860,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 640404811}
+      - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
         m_MethodName: confirmCreateChampion
         m_Mode: 1
@@ -4119,7 +4108,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 640404811}
+      - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
         m_MethodName: cancelCreateChampion
         m_Mode: 1

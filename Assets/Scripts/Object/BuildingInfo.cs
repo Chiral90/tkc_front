@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 [System.Serializable]
 public class BuildingInfo
 {
@@ -12,5 +8,9 @@ public class BuildingInfo
     public int population;
     public int food;
     public int morale;
-    public List<string> stationed;
+    public ChampionInfo[] stationed;
+    // public string stationed;
+    // public string[] Stationed{
+    //     get { return this.stationed.Split(','); }
+    // }
 }

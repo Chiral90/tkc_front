@@ -11,9 +11,9 @@ public class ChampionInfo
     public int champ_type;
     public int leadership;
     public int team;
-    public List<string> own_castles;
+    // public string[] own_castles;
     public string location;
-    [System.NonSerialized] public string tmpLocation;
+    [NonSerialized] public string tmpLocation;
 
     public void createNewChampion(string name, int type, int team)
     {
@@ -22,7 +22,7 @@ public class ChampionInfo
         this.leadership = 0;
         //this.ownCastles = null;
         this.team = team;
-        this.own_castles = new List<string>();
+        // this.own_castles = new string[] {};
         this.location = "";
     }
 
@@ -34,8 +34,44 @@ public class ChampionInfo
         _f.AddField("leadership", this.leadership);
         _f.AddField("team", this.team);
         _f.AddField("location", this.location);
-        _f.AddField("own_castles", "[" + String.Join(", ", this.own_castles) + "]", System.Text.Encoding.UTF8);
+        // if (this.own_castles.Length != 0)
+        // {
+        //     _f.AddField("own_castles", "[" + String.Join(", ", this.own_castles) + "]", System.Text.Encoding.UTF8);
+        // }
+        // else
+        // {
+        //     _f.AddField("own_castles", "");
+        // }
         return _f;
         
+    }
+
+    public string ChampType {
+        get
+        {
+            string typeName = "";
+            switch (this.champ_type)
+            {
+                case 0:
+                    typeName = "지장";
+                    break;
+                case 1:
+                    typeName = "무장";
+                    break;
+                case 2:
+                    typeName = "덕장";
+                    break;
+                case 3:
+                    typeName = "첩보";
+                    break;
+                case 4:
+                    typeName = "보급";
+                    break;
+                default:
+                    typeName = "오류";
+                    break;
+            }
+            return typeName;
+        }
     }
 }
