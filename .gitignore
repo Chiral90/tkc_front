@@ -1,1 +1,3 @@
 Library/
+*.log
+*.blob
