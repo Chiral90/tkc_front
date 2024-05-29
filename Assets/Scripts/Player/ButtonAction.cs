@@ -109,6 +109,12 @@ public class ButtonAction : MonoBehaviour
             int idx = 0;
             foreach (ChampionInfo c in _mainPanelData.data.stationed)
             {
+                // 1. 유저 세력이 자유가 아니고 2. 유저 세력과 건물 세력이 다르고 3. 유저 타입이 첩보이면
+                if (c.team != 0 && c.team != _mainPanelData.data.team && c.champ_type == 3)
+                {
+                    continue;
+                }
+                
                 if (idx == 0)
                 {
                     champData.transform.Find("Name").GetComponent<TextMeshProUGUI>().text = c.champ_name;
@@ -170,6 +176,7 @@ public class ButtonAction : MonoBehaviour
             //string beforeLocation = CurrentInfo.currentChampion.location;
             //CurrentInfo.currentChampion.location = targetName;
             // 다음 턴에 이동
+            // 다른 세력과 겹치면 전투 발생
         }
         // 진입
         else if (text.Equals("진입"))
