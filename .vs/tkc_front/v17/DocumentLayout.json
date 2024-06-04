@@ -1,0 +1,90 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\!Project\\tkc_front\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9D81F6F6-27C4-0142-59BF-E036B7E3B99E}|Assembly-CSharp.csproj|c:\\!project\\tkc_front\\assets\\scripts\\object\\battleuniteventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D81F6F6-27C4-0142-59BF-E036B7E3B99E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\object\\battleuniteventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D81F6F6-27C4-0142-59BF-E036B7E3B99E}|Assembly-CSharp.csproj|c:\\!project\\tkc_front\\assets\\scripts\\object\\buildingeventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D81F6F6-27C4-0142-59BF-E036B7E3B99E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\object\\buildingeventmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D81F6F6-27C4-0142-59BF-E036B7E3B99E}|Assembly-CSharp.csproj|C:\\!Project\\tkc_front\\assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D81F6F6-27C4-0142-59BF-E036B7E3B99E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9D81F6F6-27C4-0142-59BF-E036B7E3B99E}|Assembly-CSharp.csproj|C:\\!Project\\tkc_front\\assets\\scripts\\player\\battleunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9D81F6F6-27C4-0142-59BF-E036B7E3B99E}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player\\battleunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BattleUnitEventManager.cs",
+              "DocumentMoniker": "C:\\!Project\\tkc_front\\Assets\\Scripts\\Object\\BattleUnitEventManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Object\\BattleUnitEventManager.cs",
+              "ToolTip": "C:\\!Project\\tkc_front\\Assets\\Scripts\\Object\\BattleUnitEventManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Object\\BattleUnitEventManager.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAqwB0AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T07:59:47.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BuildingEventManager.cs",
+              "DocumentMoniker": "C:\\!Project\\tkc_front\\Assets\\Scripts\\Object\\BuildingEventManager.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Object\\BuildingEventManager.cs",
+              "ToolTip": "C:\\!Project\\tkc_front\\Assets\\Scripts\\Object\\BuildingEventManager.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Object\\BuildingEventManager.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAAwBoAAAAjAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T07:47:22.67Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PlayerController.cs",
+              "DocumentMoniker": "C:\\!Project\\tkc_front\\Assets\\Scripts\\Player\\PlayerController.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\PlayerController.cs",
+              "ToolTip": "C:\\!Project\\tkc_front\\Assets\\Scripts\\Player\\PlayerController.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\PlayerController.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAAwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-03T07:46:04.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BattleUnit.cs",
+              "DocumentMoniker": "C:\\!Project\\tkc_front\\Assets\\Scripts\\Player\\BattleUnit.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\BattleUnit.cs",
+              "ToolTip": "C:\\!Project\\tkc_front\\Assets\\Scripts\\Player\\BattleUnit.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\BattleUnit.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-02T07:16:01.024Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
