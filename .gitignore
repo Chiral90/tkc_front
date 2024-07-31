@@ -1,3 +1,5 @@
 Library/
 *.log
 *.blob
+.vs/
+.vscode/
