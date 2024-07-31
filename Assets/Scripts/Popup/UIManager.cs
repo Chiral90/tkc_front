@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
         {
             if (!data.IsUnityNull())
             {
-                popup.data = data;
+                popup.bData = data;
                 Debug.Log(string.Format("current champ_name : {0} / castellan : {1} / equal? : {2}", CurrentInfo.currentChampion.champ_name, data.castellan, data.castellan.Equals(CurrentInfo.currentChampion.champ_name)));
                 Debug.Log(string.Format("current team : {0} / building team : {1} / equal? : {2}", CurrentInfo.currentChampion.team, data.team, CurrentInfo.currentChampion.team == data.team));
                 // set building datas
@@ -55,8 +55,12 @@ public class UIManager : MonoBehaviour
                 }
                 // Debug.Log(string.Join(',', data.stationed));
                 GameObject _button = popup.gameObject.transform.Find("Enter Building").gameObject;
-                
-                if (CurrentInfo.currentChampion.team == data.team)
+
+                if (data.status == 1)
+                {
+                    _button.GetComponentInChildren<TextMeshProUGUI>().text = "전투";
+                }
+                else if (CurrentInfo.currentChampion.team == data.team)
                 {
                     foreach (ChampionInfo c in data.stationed)
                     {
@@ -110,6 +114,12 @@ public class UIManager : MonoBehaviour
             openPopups.Push(popup);
         }
     }
+    public void OpenUnitFormationPopup(UIPopup popup)
+    {
+        // 새로운 팝업을 엽니다.
+        UIUtilities.SetUIActive(popup.gameObject, true);
+        openPopups.Push(popup);
+    }
 
     // 팝업을 닫습니다.
     public void ClosePopup(UIPopup popup)
@@ -154,5 +164,16 @@ public class UIManager : MonoBehaviour
         {
             pendingPopups.Enqueue(popup);
         }
+    }
+
+    public void HidePopup(UIPopup popup)
+    {
+        // 팝업을 닫습니다.
+        UIUtilities.SetUIActive(popup.gameObject, false);
+    }
+    public void ShowPopup(UIPopup popup)
+    {
+        // 팝업을 닫습니다.
+        UIUtilities.SetUIActive(popup.gameObject, true);
     }
 }

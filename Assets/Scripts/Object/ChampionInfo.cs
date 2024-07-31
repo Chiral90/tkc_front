@@ -14,6 +14,8 @@ public class ChampionInfo
     // public string[] own_castles;
     public string location;
     [NonSerialized] public string tmpLocation;
+    [NonSerialized] public List<UnitInfo> units;
+    [NonSerialized] public string[] unit_types = { "보병", "기병", "창병", "전차병", "궁병" };
 
     public void createNewChampion(string name, int type, int team)
     {
@@ -45,7 +47,6 @@ public class ChampionInfo
         return _f;
         
     }
-
     public string ChampType {
         get
         {
@@ -73,5 +74,66 @@ public class ChampionInfo
             }
             return typeName;
         }
+    }
+    public void SetDefaultUnit()
+    {
+        UnitInfo _u = new UnitInfo();
+        _u.unit_index = 0;
+        if (this.champ_type == 0)
+        {
+            _u.unit_type = -1;
+        }
+        else if (this.champ_type == 1)
+        {
+            _u.unit_type = 2;
+        }
+        else if (this.champ_type == 2)
+        {
+            _u.unit_type = 1;
+        }
+        else if (this.champ_type == 3)
+        {
+            _u.unit_type = 0;
+        }
+        else if (this.champ_type == 4)
+        {
+            _u.unit_type = 0;
+        }
+        _u.troops_quantity = this.leadership;
+        _u.unit_attack = this.leadership;
+        _u.unit_defence = this.leadership;
+        _u.unit_morale = this.leadership;
+        _u.unit_status = 0;
+        float c = CalcLeadershipCoefficient(_u);
+        _u.unit_attack *= c;
+    }
+    public float CalcLeadershipCoefficient(UnitInfo u)
+    {
+        float c = 1;
+        // unit type
+        if (u.unit_type == 0)
+        {
+            c = 0;
+        }
+        else if (u.unit_type == 1)
+        {
+            c = 1;
+        }
+        else if (u.unit_type == 2)
+        {
+            c = 1.25f;
+        }
+        else if (u.unit_type == 3)
+        {
+            c = 1f;
+        }
+        else if (u.unit_type == 4)
+        {
+            c = 1;
+        }
+        // unit status
+
+        // unit morale
+        return c;
     }
 }

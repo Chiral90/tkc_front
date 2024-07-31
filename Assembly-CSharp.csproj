@@ -61,35 +61,44 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Object\BattleUnitEventManager.cs" />
-    <Compile Include="Assets\Scripts\Player\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\Controller\QuantitySliderController.cs" />
+    <Compile Include="Assets\Scripts\Object\TurnInfoManager.cs" />
     <Compile Include="Assets\Assets\Fantasy Character Pixel Art Pack1\Script\CharacterAnimation.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLWindow\WebGLWindow.cs" />
     <Compile Include="Assets\Scripts\Popup\UIManager.cs" />
-    <Compile Include="Assets\Scripts\Player\GameManager.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Object\UnitInfo.cs" />
+    <Compile Include="Assets\Scripts\Controller\CursorController.cs" />
+    <Compile Include="Assets\Scripts\Controller\TurnTimer.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Wrapper\WrappedInputField.cs" />
     <Compile Include="Assets\Scripts\Object\BuildingInfo.cs" />
+    <Compile Include="Assets\Scripts\Controller\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\JsonHelper.cs" />
+    <Compile Include="Assets\Scripts\Controller\QuantityTextController.cs" />
+    <Compile Include="Assets\Scripts\Controller\CurrentInfo.cs" />
     <Compile Include="Assets\Scripts\Node.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Wrapper\WrappedTMPInputField.cs" />
-    <Compile Include="Assets\Scripts\Player\CurrentInfo.cs" />
+    <Compile Include="Assets\Scripts\Scene\SampleBattleScene.cs" />
+    <Compile Include="Assets\Scripts\Controller\UnitTypeDropdownController.cs" />
     <Compile Include="Assets\Mocapot\Fantasy Tileset\Scripts\LightController.cs" />
     <Compile Include="Assets\Scripts\StaticCoroutine.cs" />
+    <Compile Include="Assets\Scripts\Scene\SceneManagerScript.cs" />
+    <Compile Include="Assets\Scripts\Controller\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Controller\SelectSystem.cs" />
     <Compile Include="Assets\Scripts\Object\TileManager.cs" />
+    <Compile Include="Assets\Scripts\Scene\SampleWorldMapScene.cs" />
+    <Compile Include="Assets\Scripts\Controller\ButtonAction.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\WebGLInput.cs" />
-    <Compile Include="Assets\Scripts\Player\CursorController.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Mobile\WebGLInputMobile.cs" />
-    <Compile Include="Assets\Scripts\Player\ButtonAction.cs" />
     <Compile Include="Assets\Scripts\Popup\UIPopup.cs" />
-    <Compile Include="Assets\Scripts\Player\BattleUnit.cs" />
-    <Compile Include="Assets\Scripts\Scene\SampleScene.cs" />
+    <Compile Include="Assets\Scripts\Controller\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\Popup\UnitFormationController.cs" />
+    <Compile Include="Assets\Scripts\Controller\BattleCursor.cs" />
     <Compile Include="Assets\Scripts\Object\ChampionInfo.cs" />
     <Compile Include="Assets\Scripts\Object\BuildingEventManager.cs" />
-    <Compile Include="Assets\Scripts\Player\TurnTimer.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Detail\RebuildChecker.cs" />
-    <Compile Include="Assets\Scripts\Object\TurnInfo.cs" />
     <Compile Include="Assets\Scripts\WebAPI.cs" />
+    <Compile Include="Assets\Scripts\Object\BattleUnit.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Wrapper\IInputField.cs" />
-    <Compile Include="Assets\Scripts\WebRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

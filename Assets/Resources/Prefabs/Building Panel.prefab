@@ -809,7 +809,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: openDetail
+        m_MethodName: OpenDetail
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1082,7 +1082,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: openChamplist
+        m_MethodName: OpenChamplist
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2218,6 +2218,7 @@ MonoBehaviour:
     food: 0
     morale: 0
     stationed: []
+    status: 0
   popupCanvas: {fileID: 0}
   popupAnimator: {fileID: 0}
 --- !u!1 &6359992057079703610
@@ -3335,7 +3336,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: enterBuilding
+        m_MethodName: EnterBuilding
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

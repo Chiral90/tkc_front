@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class UIPopup : MonoBehaviour, IDragHandler, IScrollHandler
 {
-    public BuildingInfo data;
+    public BuildingInfo bData;
     [SerializeField] private GameObject popupCanvas; // 팝업 창의 캔버스
     [SerializeField] private Animator popupAnimator; // 팝업 창의 애니메이터
 

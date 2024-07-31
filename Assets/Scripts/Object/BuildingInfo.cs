@@ -1,3 +1,5 @@
+using System;
+
 [System.Serializable]
 public class BuildingInfo
 {
@@ -9,6 +11,9 @@ public class BuildingInfo
     public int food;
     public int morale;
     public ChampionInfo[] stationed;
+    //240603 add
+    //0: common, 1: battle
+    public int status;
     // public string stationed;
     // public string[] Stationed{
     //     get { return this.stationed.Split(','); }

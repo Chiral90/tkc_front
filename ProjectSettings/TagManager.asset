@@ -46,3 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Normal
+    uniqueID: 26207627
+    locked: 0
+  - name: Highlight
+    uniqueID: 2858749011
+    locked: 0

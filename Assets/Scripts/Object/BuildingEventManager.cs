@@ -1,8 +1,12 @@
+#define DEV_STATE
+
 using System;
 using UnityEngine;
 
 public class BuildingEventManager : MonoBehaviour
 {
+    BuildingInfo _b;
+    public BuildingInfo BuildingData {  get { return _b; } }
     Api api;
     private Camera _uiCamera;
     private PolygonCollider2D _collider;
@@ -10,6 +14,14 @@ public class BuildingEventManager : MonoBehaviour
     private bool _isMouseOver;
     private bool _isMousePushed;
     GameObject _target;
+
+    [SerializeField]
+    int _state = 0;
+    public int State
+    {
+        get { return _state; }
+        set { _state = value; }
+    }
     
     private void Awake()
     {
@@ -24,10 +36,6 @@ public class BuildingEventManager : MonoBehaviour
         var ray = _uiCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         Physics.Raycast(ray, out hit);
-        if (hit.collider != null && hit.collider == _collider && !_isMouseOver)
-        {
-            Debug.Log(_target.name);
-        }
         
         if (hit.collider != null && hit.collider == _collider && !_isMouseOver)
         {
@@ -60,7 +68,7 @@ public class BuildingEventManager : MonoBehaviour
     private void OnMouseUp()
     {
         // Debug.Log("OnMouseUp");
-        openPopup(_target);
+        OpenPopup(_target);
     }
     // private void OnMouseExit()
     // {
@@ -86,14 +94,14 @@ public class BuildingEventManager : MonoBehaviour
     {
         // Debug.Log("Mouse Enter");
         PolygonCollider2D pc = _target.GetComponent<PolygonCollider2D>();
-        highlightAroundCollider(_target, pc, Color.yellow, Color.red, 0.1f);
+        HighlightAroundCollider(_target, pc, Color.yellow, Color.red, 0.1f);
     }
     public void OnMouseExit()
     {
         // Debug.Log("Mouse Exit");
-        deleteHighlight(_target);
+        DeleteHighlight(_target);
     }
-    void highlightAroundCollider(GameObject target, Component cpType, Color beginColor, Color endColor, float hightlightSize = 0.3f)
+    void HighlightAroundCollider(GameObject target, Component cpType, Color beginColor, Color endColor, float highlightSize = 0.3f)
     {
         //1. Create new Line Renderer
         LineRenderer lineRenderer = target.GetComponent<LineRenderer>();
@@ -114,7 +122,7 @@ public class BuildingEventManager : MonoBehaviour
 
             //Set color and width
             lineRenderer.SetColors(beginColor, endColor);
-            lineRenderer.SetWidth(hightlightSize, hightlightSize);
+            lineRenderer.SetWidth(highlightSize, highlightSize);
 
             //4. Convert local to world points
             for (int i = 0; i < pColiderPos.Length; i++)
@@ -147,7 +155,7 @@ public class BuildingEventManager : MonoBehaviour
 
         }
     }
-    void deleteHighlight(GameObject target)
+    void DeleteHighlight(GameObject target)
     {
         //1. Create new Line Renderer
         LineRenderer lineRenderer = target.GetComponent<LineRenderer>();
@@ -158,7 +166,7 @@ public class BuildingEventManager : MonoBehaviour
         Destroy(target.GetComponent<LineRenderer>());
     }
 
-    void openPopup(GameObject target)
+    void OpenPopup(GameObject target)
     {
         BuildingInfo _bInfo = null;
         // clickObj.name의 팝업이 없으면 팝업 생성
@@ -173,6 +181,63 @@ public class BuildingEventManager : MonoBehaviour
         }
         catch (NullReferenceException e)
         {
+#if DEV_STATE
+            _bInfo = new BuildingInfo();
+            if (target.name == "middlecastle1")
+            {
+                _bInfo.castellan = "chiral";
+                _bInfo.population = 5000;
+                _bInfo.morale = 100;
+                _bInfo.status = 1;
+                _bInfo.team = 1;
+                _bInfo.stationed = new ChampionInfo[] { };
+                _bInfo.building_name = "middlecastle1";
+            }
+            else if (target.name == "castle1")
+            {
+                _bInfo.castellan = "chiral";
+                _bInfo.population = 1000;
+                _bInfo.morale = 10;
+                _bInfo.status = 0;
+                _bInfo.team = 1;
+                ChampionInfo _c1 = new ChampionInfo();
+                _c1.champ_name = "chiral";
+                _c1.createNewChampion("chiral", 3, 1);
+                _c1.location = "castle1";
+                _bInfo.stationed = new ChampionInfo[] { _c1 };
+                _bInfo.building_name = "castle1";
+            }
+            else if (target.name == "castle2")
+            {
+                _bInfo.castellan = "enantiomer";
+                _bInfo.population = 50000;
+                _bInfo.morale = 10;
+                _bInfo.status = 0;
+                _bInfo.team = 2;
+                ChampionInfo _c1 = new ChampionInfo();
+                _c1.champ_name = "enantiomer";
+                _c1.createNewChampion("enantiomer", 3, 2);
+                _c1.location = "castle2";
+                _bInfo.stationed = new ChampionInfo[] { _c1 };
+                _bInfo.building_name = "castle2";
+            }
+            else if (target.name == "middlecastle2")
+            {
+                _bInfo.castellan = "";
+                _bInfo.population = 1000;
+                _bInfo.morale = 50;
+                _bInfo.status = 0;
+                _bInfo.team = 0;
+                _bInfo.stationed = new ChampionInfo[] { };
+                _bInfo.building_name = "middlecastle2";
+            }
+            Canvas _uiCanvas = GameObject.Find("popupCanvas").gameObject.GetComponent<Canvas>();
+            GameObject buildingPopup = Resources.Load<GameObject>("Prefabs/Building Panel");
+
+            GameObject popup = Instantiate(buildingPopup, _uiCanvas.transform, false);//prefab 적용 시
+            popup.name = target.name;
+            UIManager.Instance.OpenBuildingPopup(popup.GetComponentInChildren<UIPopup>(), _bInfo);
+#else
             var objData = new object();
             api.routePath = "/building/" + target.name;
             var result = StaticCoroutine.StartStaticCoroutine(api.GetRequest(onSuccess: (result) =>
@@ -192,6 +257,8 @@ public class BuildingEventManager : MonoBehaviour
                 Debug.Log(error);
                 // do something
             }));
+#endif
+            _b = _bInfo;
         }
     }
 }

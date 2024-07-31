@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -342,7 +341,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: startGame
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -475,7 +474,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: createChampion
+        m_MethodName: CreateChampion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1228,6 +1227,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4547359703614632401, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
+      propertyPath: m_Name
+      value: TurnInfoManager
+      objectReference: {fileID: 0}
     - target: {fileID: 7724477635982221062, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -1236,7 +1239,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5966362506580529295, guid: 7e786804a8bd9aa2691dd47af330a57e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -2862,7 +2866,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: confirmCreateChampion
+        m_MethodName: ConfirmCreateChampion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4110,7 +4114,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
         m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
-        m_MethodName: cancelCreateChampion
+        m_MethodName: CancelCreateChampion
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
