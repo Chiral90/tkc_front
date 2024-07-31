@@ -2,4 +2,6 @@ Library/
 *.log
 *.blob
 .vs/
+.vsconfig
 .vscode/
+Temp/
