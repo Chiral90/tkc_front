@@ -66,18 +66,16 @@ MonoBehaviour:
     the 2D Renderer in Universal RP.
   preview: {fileID: -3604256930052969394}
   dependencies:
-  - dependency: {fileID: 11400000, guid: e9f8ba022c9fc7f5891002ee047e49b7, type: 2}
-    instantiationMode: 1
-  - dependency: {fileID: 2800000, guid: d00bc76b8ae4da7418bfb099786f2b83, type: 3}
+  - dependency: {fileID: 2800000, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
     instantiationMode: 0
-  - dependency: {fileID: 2800000, guid: ee148e281f3c41c5b4ff5f8a5afe5a6c, type: 3}
-    instantiationMode: 1
-  - dependency: {fileID: 2800000, guid: 2fd6421f253b4ef1a19526541f9ffc0c, type: 3}
-    instantiationMode: 1
+  - dependency: {fileID: 2800000, guid: f341eb92f5cc98a49bfebb13344a57aa, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 7777759342924715227, guid: 8bf35bc396ed7a74e88fa492843b2be7, type: 3}
+    instantiationMode: 0
+  - dependency: {fileID: 2800000, guid: e8ca73acc2996b7478615bcc49237fe9, type: 3}
+    instantiationMode: 0
   - dependency: {fileID: 2800000, guid: bbcf32dd3b4d5f78d8ec0067a94ded47, type: 3}
     instantiationMode: 0
-  - dependency: {fileID: 12800000, guid: 404027328536ac14187b424690e2e184, type: 3}
-    instantiationMode: 1
   templatePipeline: {fileID: 0}
   badge: {fileID: 0}
   addToDefaults: 1

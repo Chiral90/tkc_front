@@ -102,9 +102,9 @@ public class CurrentInfo : MonoBehaviour
 #if DEV_STATE
         currentID = "dozos";
         currentChampion = new ChampionInfo();
-        currentChampion.createNewChampion("chiral", 3, 1);
+        currentChampion.createNewChampion("chiral", 3, 0);
         // CurrentInfo.currentChampion.own_castles.Append("castle1");
-        currentChampion.location = "castle1";
+        currentChampion.location = "";
         currentChampion.leadership = 100;
         UnitInfo unit1 = new UnitInfo();
         SetUserPanel();

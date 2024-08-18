@@ -6,7 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 public class CursorController : MonoBehaviour
 {
     [SerializeField] Transform tf_cursor;   // 커서의 현재 위치
-    [SerializeField] float dragSpeed = 10.0f;   // 화면 움직임 속도
+    //[SerializeField] float dragSpeed = 10.0f;   // 화면 움직임 속도
     private float firstClickPointX;
     bool _selected;
     GameObject _selectedTarget;
@@ -123,7 +123,7 @@ public class CursorController : MonoBehaviour
             ResetSelected();
         }
     }
-    void highlightAroundCollider(GameObject target, Component cpType, Color beginColor, Color endColor, float hightlightSize = 0.3f)
+    void highlightAroundCollider(GameObject target, Component cpType, Color beginColor, Color endColor, float highlightSize = 0.3f)
     {
         //1. Create new Line Renderer
         LineRenderer lineRenderer = target.GetComponent<LineRenderer>();
@@ -143,8 +143,11 @@ public class CursorController : MonoBehaviour
             Vector2[] pColiderPos = (cpType as PolygonCollider2D).points;
 
             //Set color and width
-            lineRenderer.SetColors(beginColor, endColor);
-            lineRenderer.SetWidth(hightlightSize, hightlightSize);
+            //lineRenderer.SetColors(beginColor, endColor);
+            //lineRenderer.SetWidth(highlightSize, highlightSize);
+            lineRenderer.startWidth = lineRenderer.endWidth = highlightSize;
+            lineRenderer.startColor = beginColor;
+            lineRenderer.endColor = endColor;
 
             //4. Convert local to world points
             for (int i = 0; i < pColiderPos.Length; i++)
@@ -153,7 +156,8 @@ public class CursorController : MonoBehaviour
             }
 
             //5. Set the SetVertexCount of the LineRenderer to the Length of the points
-            lineRenderer.SetVertexCount(pColiderPos.Length + 1);
+            //lineRenderer.SetVertexCount(pColiderPos.Length + 1);
+            lineRenderer.positionCount = pColiderPos.Length + 1;
             for (int i = 0; i < pColiderPos.Length; i++)
             {
                 //6. Draw the  line

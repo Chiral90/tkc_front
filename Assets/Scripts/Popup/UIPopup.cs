@@ -6,7 +6,10 @@ using UnityEngine.EventSystems;
 
 public class UIPopup : MonoBehaviour, IDragHandler, IScrollHandler
 {
-    public BuildingInfo bData;
+    BuildingInfo _bData;
+    Action<WaitForUserResponse> callback;
+
+    public BuildingInfo BData { get { return _bData; } set { _bData = value; } }
     [SerializeField] private GameObject popupCanvas; // 팝업 창의 캔버스
     [SerializeField] private Animator popupAnimator; // 팝업 창의 애니메이터
 
@@ -81,6 +84,18 @@ public class UIPopup : MonoBehaviour, IDragHandler, IScrollHandler
         // throw new NotImplementedException();
         // Debug.Log("On Scroll");
     }
+
+    public void SelectOKButton()
+    {
+        WaitForUserResponse response;
+        response = new WaitForUserResponse(true);
+        callback(response);
+    }
+
+    public void SelectCancelButton()
+    {
+
+    }
 }
 
 public static class UIUtilities
@@ -92,5 +107,36 @@ public static class UIUtilities
         {
             uiObject.SetActive(isActive);
         }
+    }
+}
+
+public class WaitForUserResponse : ProcessResponse
+{
+    public bool userResponse;
+
+    public WaitForUserResponse(bool response)
+    {
+        userResponse = response;
+    }
+
+    public bool response
+    {
+        get
+        {
+            return userResponse;
+        }
+        set
+        {
+            userResponse = value;
+        }
+    }
+}
+
+public interface ProcessResponse
+{
+    bool response
+    {
+        get;
+        set;
     }
 }

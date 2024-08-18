@@ -46,6 +46,7 @@ public class UnitFormationController : MonoBehaviour
         }
         catch (NullReferenceException e)
         {
+            Debug.LogError(e.Message);
             _u.unit_index = 0;
         }
         _u.unit_nickname =
@@ -95,7 +96,7 @@ public class UnitFormationController : MonoBehaviour
     void SetUnitsFormationList()
     {
         Debug.Log("Set Unit Formation");
-        GameObject _pgo = this.transform.Find("UnitFormationList").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
+        GameObject _pgo = this.transform.Find("Unit Formation List").Find("Scroll View").Find("Viewport").Find("Content").gameObject;
         
         if (CurrentInfo.currentChampion.units == null || CurrentInfo.currentChampion.units.Count == 0) return;
         Debug.Log("Unit Count: " + CurrentInfo.currentChampion.units.Count);
@@ -108,7 +109,7 @@ public class UnitFormationController : MonoBehaviour
             }
             else
             {
-                _data = Instantiate(Resources.Load<GameObject>("Prefabs/UnitListItem"), _pgo.transform);
+                _data = Instantiate(Resources.Load<GameObject>("Prefabs/Unit List Item"), _pgo.transform);
                 _data.name = "Unit_" + c.unit_index;
             }
             SetUnitData(_data, c);

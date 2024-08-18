@@ -108,8 +108,9 @@ public class SampleBattleScene : MonoBehaviour
     //save state
 
     //reserve action
-    public void ReserveAction()
+    public void ReserveBattleUnitAction()
     {
+        Debug.Log("Reserve battleunit action");
         GameObject _units = GameObject.Find("worldCanvas").transform.Find("Units").gameObject;
 
         for (int i = 1; i < _units.transform.childCount; i++)

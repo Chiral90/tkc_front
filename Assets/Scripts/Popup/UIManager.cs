@@ -42,7 +42,7 @@ public class UIManager : MonoBehaviour
         {
             if (!data.IsUnityNull())
             {
-                popup.bData = data;
+                popup.BData = data;
                 Debug.Log(string.Format("current champ_name : {0} / castellan : {1} / equal? : {2}", CurrentInfo.currentChampion.champ_name, data.castellan, data.castellan.Equals(CurrentInfo.currentChampion.champ_name)));
                 Debug.Log(string.Format("current team : {0} / building team : {1} / equal? : {2}", CurrentInfo.currentChampion.team, data.team, CurrentInfo.currentChampion.team == data.team));
                 // set building datas
@@ -55,10 +55,11 @@ public class UIManager : MonoBehaviour
                 }
                 // Debug.Log(string.Join(',', data.stationed));
                 GameObject _button = popup.gameObject.transform.Find("Enter Building").gameObject;
-
+                int _entertType = -1;
                 if (data.status == 1)
                 {
-                    _button.GetComponentInChildren<TextMeshProUGUI>().text = "전투";
+                    //전투
+                    _entertType = 5;
                 }
                 else if (CurrentInfo.currentChampion.team == data.team)
                 {
@@ -73,7 +74,8 @@ public class UIManager : MonoBehaviour
                         else
                         {
                             Debug.Log("not stationed...");
-                            _button.GetComponentInChildren<TextMeshProUGUI>().text = "진입";
+                            //진입
+                            _entertType = 1;
                             _button.SetActive(true);
                         }
                     }
@@ -82,28 +84,35 @@ public class UIManager : MonoBehaviour
                 else if (CurrentInfo.currentChampion.location.Equals(""))
                 {
                     Debug.Log("no location...");
-                    _button.GetComponentInChildren<TextMeshProUGUI>().text = "선택";
+                    //선택
+                    _entertType = 0;
                     _button.SetActive(true);
                 }
                 else
                 {
                     if (data.team == 0)
                     {
-                        _button.GetComponentInChildren<TextMeshProUGUI>().text = "점령";
+                        //점령
+                        _entertType = 2;
                     }
                     else
                     {
                         if (CurrentInfo.currentChampion.champ_type == 3)
                         {
-                            _button.GetComponentInChildren<TextMeshProUGUI>().text = "잠입";
+                            //잠입
+                            _entertType = 3;
                         }
                         else
                         {
-                            _button.GetComponentInChildren<TextMeshProUGUI>().text = "침입";
+                            //침입
+                            _entertType = 4;
                         }
                     }
                     _button.SetActive(true);
                 }
+                _button.GetComponentInChildren<TextMeshProUGUI>().text = data.enterTypes[_entertType];
+                Variables.Object(_button.gameObject).Set("type", _entertType);
+                Debug.Log("Btn type: " + Variables.Object(_button.gameObject));
             }
             else
             {
@@ -115,6 +124,20 @@ public class UIManager : MonoBehaviour
         }
     }
     public void OpenUnitFormationPopup(UIPopup popup)
+    {
+        // 새로운 팝업을 엽니다.
+        UIUtilities.SetUIActive(popup.gameObject, true);
+        openPopups.Push(popup);
+    }
+
+    public void OpenTeamSelectPopup(UIPopup popup)
+    {
+        // 새로운 팝업을 엽니다.
+        UIUtilities.SetUIActive(popup.gameObject, true);
+        openPopups.Push(popup);
+    }
+
+    public void OpenMessageBox(UIPopup popup)
     {
         // 새로운 팝업을 엽니다.
         UIUtilities.SetUIActive(popup.gameObject, true);

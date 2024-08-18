@@ -1,3 +1,5 @@
+#define DEV_STATE
+
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -15,12 +17,16 @@ public class BattleUnit : MonoBehaviour
     Canvas _flagCanvas;
 
     public float moveSpeed;
-    public Vector3 _moveDirection;
-    public Vector3 MoveDirection
+    ProgressBarPro _hp;
+    float _troopsMaxQuantity;
+
+    Vector2 _moveDirection;
+    public Vector2 MoveDirection
     {
         get { return _moveDirection; }
         set { _moveDirection = value; }
     }
+
     [SerializeField]
     bool _selected = false;
     public bool Selected
@@ -40,7 +46,6 @@ public class BattleUnit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CalcDefaultMoveSpeed();
         if (SceneManager.GetActiveScene().name.Contains("Battle"))
         {
             if (!this.transform.name.Equals("Position") && !(this.transform.parent.name.Equals("UnPositionedUnit")))
@@ -50,6 +55,12 @@ public class BattleUnit : MonoBehaviour
                 _flagCanvas.overrideSorting = true;
                 _flagCanvas.worldCamera = Camera.main;
                 _eventManager = this.gameObject.GetComponent<BattleUnitEventManager>();
+                if (!this.name.Equals("Position"))
+                {
+                    _hp = this.transform.Find("State").transform.Find("HP").Find("HorizontalBoxGradient").GetComponent<ProgressBarPro>();
+                    SetUnitState();
+                    _troopsMaxQuantity = _unit.troops_quantity;
+                }
             }
         }
     }
@@ -117,7 +128,7 @@ public class BattleUnit : MonoBehaviour
     }
     void CalcDefaultMoveSpeed()
     {
-        float s = 0.01f;
+        float s = 1f;
         // unit type
         if (_unit.unit_type == 0)
         {
@@ -140,5 +151,74 @@ public class BattleUnit : MonoBehaviour
             s *= 0.8f;
         }
         moveSpeed = s;
+    }
+    void CalcDefaultAttak()
+    {
+        float a = _unit.troops_quantity;
+        // unit type
+        if (_unit.unit_type == 0)
+        {
+            a *= 0;
+        }
+        else if (_unit.unit_type == 1)
+        {
+            a *= 0.1f;
+        }
+        else if (_unit.unit_type == 2)
+        {
+            a *= 0.2f;
+        }
+        else if (_unit.unit_type == 3)
+        {
+            a *= 1.8f;
+        }
+        else if (_unit.unit_type == 4)
+        {
+            a *= 0.5f;
+        }
+        _unit.unit_attack = a;
+    }
+
+    void SetUnitState()
+    {
+        _hp.SetValue(_unit.troops_quantity, _unit.troops_quantity, false);
+        CalcDefaultMoveSpeed();
+        CalcDefaultAttak();
+    }
+
+    public void Attack(Collider2D col)
+    {
+        Debug.Log("Attack: " + col.name + " / damage: " + (int)_unit.unit_attack);
+#if DEV_STATE
+        col.gameObject.GetComponent<BattleUnit>().Attacked((int)_unit.unit_attack);
+#else
+        // Send damage battle socket server
+#endif
+    }
+    public void Attacked(int damage)
+    {
+        Debug.Log(this.name + " is Attacked");
+        _unit.troops_quantity -= damage;
+        UpdateUnitState();
+        if (_unit.troops_quantity <= 0)
+        {
+            Eliminated();
+        }
+    }
+    void Eliminated()
+    {
+        DestroyImmediate(gameObject);
+    }
+    void UpdateUnitState()
+    {
+        UpdateUnitHP();
+    }
+    void UpdateUnitHP()
+    {
+        _hp.SetValue(_unit.troops_quantity / _troopsMaxQuantity);
+    }
+    void GetExp()
+    {
+
     }
 }

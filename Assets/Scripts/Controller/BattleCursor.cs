@@ -53,7 +53,9 @@ public class BattleCursor : MonoBehaviour
         {
             if (_unpositionedUnit)
             {
-                ActiveUnpositionedUnit(GameObject.Find("worldCanvas").transform.Find("Units").transform.Find("UnPositionedUnit").gameObject);
+                ActiveUnpositionedUnit(
+                    GameObject.Find("worldCanvas").transform.Find("Units").transform.Find("UnPositionedUnit").gameObject
+                    );
 
                 if (Input.GetMouseButtonDown(0))
                 {
@@ -277,52 +279,22 @@ public class BattleCursor : MonoBehaviour
         // Next Step Parameter (Units-UnPositionedUnit)
 
         // Set UnitInfo
-        SetUnitInfoVariables(GameObject.Find("worldCanvas").transform.Find("Units").transform.Find("UnPositionedUnit").gameObject, _button.GetComponent<BattleUnit>().Unit);
+        SetUnitInfoVariables(
+            GameObject.Find("worldCanvas").transform.Find("Units").transform.Find("UnPositionedUnit").gameObject
+            , _button.GetComponent<BattleUnit>().Unit);
     }
     void ActiveUnpositionedUnit(GameObject upu)
     {
-        var vars = Variables.Object(upu);
-        UnitInfo _u;
-        foreach (var var in vars)
-        {
-            var varName = var.name;// "Name" of variable from inspector
-            /*
-            if (var.value is BattleUnit)
-            {
-                //value is a class type of ClassName
-                Debug.Log(var.name + " / " + var.typeHandle);
-            }
-            */
-            if (varName.Equals("UnitInfo"))
-            {
-                //Assign Variables
-                _u = var.value as UnitInfo;
-            }
-        }
+        //UnitInfo _v = Variables.Object(upu).Get<UnitInfo>("UnitInfo");
+        //Debug.Log(_v.troops_quantity);
         // Follow Unit Image
         upu.transform.position = Camera.main.ScreenToWorldPoint(
             new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
     }
     void SetUnitInfoVariables(GameObject o, UnitInfo u)
     {
-        var vars = Variables.Object(o);
-        foreach (var var in vars)
-        {
-            var varName = var.name;// "Name" of variable from inspector
-            /*
-            if (var.value is BattleUnit)
-            {
-                //value is a class type of ClassName
-                Debug.Log(var.name + " / " + var.typeHandle);
-            }
-            */
-            if (varName.Equals("UnitInfo"))
-            {
-                //Assign Variables
-                var.value = u;
-                Debug.Log(((var.value as UnitInfo).troops_quantity));
-            }
-        }
+        Variables.Object(o).Set("UnitInfo", u);
+        Debug.Log("Unit Troops Qty: " + Variables.Object(o).Get<UnitInfo>("UnitInfo").troops_quantity);
     }
     void SetUnitPosition()
     {
@@ -359,25 +331,9 @@ public class BattleCursor : MonoBehaviour
     {
         GameObject o = GameObject.Find("worldCanvas").transform.Find("Units").transform.Find("UnPositionedUnit").gameObject;
         UnitInfo u;
-        var vars = Variables.Object(o);
-        foreach (var var in vars)
-        {
-            var varName = var.name;// "Name" of variable from inspector
-            /*
-            if (var.value is BattleUnit)
-            {
-                //value is a class type of ClassName
-                Debug.Log(var.name + " / " + var.typeHandle);
-            }
-            */
-            if (varName.Equals("UnitInfo"))
-            {
-                //Assign Variables
-                u = var.value as UnitInfo;
-                return u;
-            }
-        }
-        return null;
+        UnitInfo _v = Variables.Object(o).Get<UnitInfo>("UnitInfo");
+        u = _v;
+        return u;
     }
     void SwitchSelectMode(bool selectMode)
     {
@@ -389,11 +345,21 @@ public class BattleCursor : MonoBehaviour
         // Switch Popup
         if (selectMode)
         {
-            UIManager.Instance.HidePopup(GameObject.Find("popupCanvas").transform.Find("Unit Formation").gameObject.GetComponent<UIPopup>());
+            UIManager.Instance.HidePopup(GameObject.Find("popupCanvas").transform.Find("Unit Formation Window").gameObject.GetComponent<UIPopup>());
         }
         else
         {
-            UIManager.Instance.ShowPopup(GameObject.Find("popupCanvas").transform.Find("Unit Formation").gameObject.GetComponent<UIPopup>());
+            UIManager.Instance.ShowPopup(GameObject.Find("popupCanvas").transform.Find("Unit Formation Window").gameObject.GetComponent<UIPopup>());
         }
+    }
+
+    void AttackUnit(GameObject target)
+    {
+        BattleUnit _b = target.GetComponent<BattleUnit>();
+        UnitInfo _u = _b.Unit;
+        if (0 == 0)
+        {
+
+        }    
     }
 }

@@ -18,4 +18,5 @@ public class BuildingInfo
     // public string[] Stationed{
     //     get { return this.stationed.Split(','); }
     // }
+    [NonSerialized] public string[] enterTypes = { "선택", "진입", "점령", "잠입", "침입", "전투" };
 }

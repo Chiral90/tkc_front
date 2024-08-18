@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static UnityEngine.GraphicsBuffer;
@@ -111,10 +112,10 @@ public class ButtonAction : MonoBehaviour
             GameObject _content = _subPanel.transform.Find("Building Champ List Panel").transform.Find("Building Stationed Champions").transform.Find("Viewport").transform.Find("Content").gameObject;
             GameObject champData = _content.transform.Find("champ").gameObject;
             int idx = 0;
-            foreach (ChampionInfo c in _mainPanelData.bData.stationed)
+            foreach (ChampionInfo c in _mainPanelData.BData.stationed)
             {
                 // 1. 유저 세력이 자유가 아니고 2. 유저 세력과 건물 세력이 다르고 3. 유저 타입이 첩보이면
-                if (c.team != 0 && c.team != _mainPanelData.bData.team && c.champ_type == 3)
+                if (c.team != 0 && c.team != _mainPanelData.BData.team && c.champ_type == 3)
                 {
                     continue;
                 }
@@ -150,8 +151,8 @@ public class ButtonAction : MonoBehaviour
             _subPanel.transform.Find("Building Champ List Panel").gameObject.SetActive(false);
             _subPanel.transform.Find("Building Detail Panel").gameObject.SetActive(true);
             UIPopup _mainPanelData = _subPanel.transform.parent.gameObject.GetComponent<UIPopup>();
-            _subPanel.transform.Find("Building Detail Panel").transform.Find("Building Food").GetComponent<TextMeshProUGUI>().text = _mainPanelData.bData.food.ToString();
-            _subPanel.transform.Find("Building Detail Panel").transform.Find("Building Morale").GetComponent<TextMeshProUGUI>().text = _mainPanelData.bData.morale.ToString();
+            _subPanel.transform.Find("Building Detail Panel").transform.Find("Building Food").GetComponent<TextMeshProUGUI>().text = _mainPanelData.BData.food.ToString();
+            _subPanel.transform.Find("Building Detail Panel").transform.Find("Building Morale").GetComponent<TextMeshProUGUI>().text = _mainPanelData.BData.morale.ToString();
         } catch (Exception e)
         {
             Debug.LogError(e);
@@ -161,46 +162,40 @@ public class ButtonAction : MonoBehaviour
     {
         GameObject _button = EventSystem.current.currentSelectedGameObject;
         string text = _button.GetComponentInChildren<TextMeshProUGUI>().text;
+        int _btnType = Variables.Object(_button).Get<int>("type");
         string targetName = _button.transform.parent.Find("Building Name").GetComponent<TextMeshProUGUI>().text;
-        // 침입
-        if (text.Equals("침입"))
+        switch (_btnType)
         {
-            // Siege
-            Debug.Log("Siege");
-        }
-        // 점령
-        else if (text.Equals("점령"))
-        {
-            // Occupation
-            Debug.Log("Occupation");
-            //string beforeLocation = CurrentInfo.currentChampion.location;
-            //CurrentInfo.currentChampion.location = targetName;
-            // 다음 턴에 이동
-            // 다른 세력과 겹치면 전투 발생
-        }
-        // 진입
-        else if (text.Equals("진입"))
-        {
-            // Stationed
-            Debug.Log("Stationed");
-        }
-        else if (text.Equals("잠입"))
-        {
-            // Spy
-            Debug.Log("Spy");
-        }
-        else if (text.Equals("선택"))
-        {
-            Debug.Log("Select location");
-            UpdateLocation(targetName);
-            return;
-        }
-        else if (text.Equals("전투"))
-        {
-            BuildingInfo _b = _button.transform.parent.GetComponent<UIPopup>().bData;
-            CurrentInfo.currentBattleLocationInfo = _b;
-            // Load BattleMap
-            GameObject.Find("SceneManager").GetComponent<SceneManagerScript>().LoadBattleMap();
+            case 0: //선택
+                Debug.Log("Select location");
+                UpdateLocation(targetName);
+                break;
+            case 1: //진입
+                // Stationed
+                Debug.Log("Stationed");
+                break;
+            case 2: //점령
+                // Occupation
+                Debug.Log("Occupation");
+                //string beforeLocation = CurrentInfo.currentChampion.location;
+                //CurrentInfo.currentChampion.location = targetName;
+                // 다음 턴에 이동
+                // 다른 세력과 겹치면 전투 발생
+                break;
+            case 3: //잠입
+                // Spy
+                Debug.Log("Spy");
+                break;
+            case 4: //침입
+                // Siege
+                Debug.Log("Siege");
+                break;
+            case 5: //전투
+                BuildingInfo _b = _button.transform.parent.GetComponent<UIPopup>().BData;
+                CurrentInfo.currentBattleLocationInfo = _b;
+                // Load BattleMap
+                GameObject.Find("SceneManager").GetComponent<SceneManagerScript>().LoadBattleMap();
+                break;
         }
         UpdateDestination(targetName);
         CalcDistance(targetName);
@@ -289,10 +284,9 @@ public class ButtonAction : MonoBehaviour
     {
         //Canvas _uiCanvas = GameObject.Find("GameManager").transform.Find("userCanvas").gameObject.GetComponent<Canvas>();
         Canvas _uiCanvas = GameObject.Find("popupCanvas").gameObject.GetComponent<Canvas>();
-        GameObject _unitFormationPopup = Resources.Load<GameObject>("Prefabs/Unit Formation");
-
+        GameObject _unitFormationPopup = Resources.Load<GameObject>("Prefabs/Unit Formation Window");
         GameObject popup = Instantiate(_unitFormationPopup, _uiCanvas.transform, false);//prefab 적용 시
-        popup.name = "Unit Formation";
+        popup.name = "Unit Formation Window";
         UIManager.Instance.OpenUnitFormationPopup(popup.GetComponent<UIPopup>());
     }
     public void LoadWorldMap()
@@ -302,5 +296,11 @@ public class ButtonAction : MonoBehaviour
             // Load WorldMap
             GameObject.Find("SceneManager").GetComponent<SceneManagerScript>().LoadWorldMap();
         }
+    }
+
+    public void LoadSupplyMap()
+    {
+        // Load SupplyMap
+        GameObject.Find("SceneManager").GetComponent<SceneManagerScript>().LoadSupplyMap();
     }
 }

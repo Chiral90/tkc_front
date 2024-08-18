@@ -121,8 +121,11 @@ public class BuildingEventManager : MonoBehaviour
             Vector2[] pColiderPos = (cpType as PolygonCollider2D).points;
 
             //Set color and width
-            lineRenderer.SetColors(beginColor, endColor);
-            lineRenderer.SetWidth(highlightSize, highlightSize);
+            //lineRenderer.SetColors(beginColor, endColor);
+            //lineRenderer.SetWidth(highlightSize, highlightSize);
+            lineRenderer.startWidth = lineRenderer.endWidth = highlightSize;
+            lineRenderer.startColor = beginColor;
+            lineRenderer.endColor = endColor;
 
             //4. Convert local to world points
             for (int i = 0; i < pColiderPos.Length; i++)
@@ -131,7 +134,8 @@ public class BuildingEventManager : MonoBehaviour
             }
 
             //5. Set the SetVertexCount of the LineRenderer to the Length of the points
-            lineRenderer.SetVertexCount(pColiderPos.Length + 1);
+            //lineRenderer.SetVertexCount(pColiderPos.Length + 1);
+            lineRenderer.positionCount = pColiderPos.Length + 1;
             for (int i = 0; i < pColiderPos.Length; i++)
             {
                 //6. Draw the  line
@@ -181,6 +185,7 @@ public class BuildingEventManager : MonoBehaviour
         }
         catch (NullReferenceException e)
         {
+            Debug.LogError(e.Message);
 #if DEV_STATE
             _bInfo = new BuildingInfo();
             if (target.name == "middlecastle1")
@@ -232,7 +237,7 @@ public class BuildingEventManager : MonoBehaviour
                 _bInfo.building_name = "middlecastle2";
             }
             Canvas _uiCanvas = GameObject.Find("popupCanvas").gameObject.GetComponent<Canvas>();
-            GameObject buildingPopup = Resources.Load<GameObject>("Prefabs/Building Panel");
+            GameObject buildingPopup = Resources.Load<GameObject>("Prefabs/Building Panel Window");
 
             GameObject popup = Instantiate(buildingPopup, _uiCanvas.transform, false);//prefab 적용 시
             popup.name = target.name;

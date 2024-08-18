@@ -8,11 +8,13 @@ using static UnityEngine.GraphicsBuffer;
 using UnityEngine.EventSystems;
 using TMPro;
 using System.Linq;
+using UnityEngine.UIElements;
 
 public class BattleUnitEventManager : MonoBehaviour
 {
     Camera _uiCamera;
     PolygonCollider2D _collider;
+    Rigidbody2D _rb;
     BattleCursor _battleCursor;
     BattleUnit _battleUnit;
 
@@ -29,15 +31,17 @@ public class BattleUnitEventManager : MonoBehaviour
     bool _forceStopMoving = false;
     bool _isMovingEnd = true;
     bool _isMoving = false;
+    bool _isAttacking = false;
+    float _attackStay = 0;
+    float _attackDelay = 2.0f;
 
-    Queue<Vector3> _path;
-    public Queue<Vector3> Path
-    {
-        get { return _path; }
-    }
+    //
+    Queue<Vector2> _path;
+    public Queue<Vector2> Path { get { return _path; } }
+
     float _pathMagnitude;
-    Vector3 _startPosition;
-    Vector3 _nextOriginalPosition;
+    Vector2 _startPosition;
+    Vector2 _nextOriginalPosition;
     public bool IsMoving
     {
         get { return _isMoving; }
@@ -50,9 +54,11 @@ public class BattleUnitEventManager : MonoBehaviour
     {
         _uiCamera = FindObjectOfType<Camera>(); // 해당 오브젝트를 비추고 있는 카메라
         _collider = this.gameObject.GetComponent<PolygonCollider2D>(); // 오브젝트의 Collider
+        _rb = this.gameObject.GetComponent<Rigidbody2D>();
         _battleCursor = GameObject.Find("BattleCursor").GetComponent<BattleCursor>();
         _battleUnit = this.gameObject.GetComponent<BattleUnit>();
-        _path = _path = new Queue<Vector3>();
+        //_path = new Queue<Vector3>();
+        _path = new Queue<Vector2>();
 
         _target = _collider.gameObject;
     }
@@ -91,7 +97,6 @@ public class BattleUnitEventManager : MonoBehaviour
         // show path
         if (_battleUnit.Selected && Input.GetMouseButtonDown(1))
         {
-            Debug.Log("RMB: " + Camera.main.ScreenToWorldPoint(Input.mousePosition));
             LineRenderer lineRenderer = _target.transform.Find("Path").GetComponent<LineRenderer>();
             if (lineRenderer == null)
             {
@@ -99,7 +104,9 @@ public class BattleUnitEventManager : MonoBehaviour
             }
             else
             {
-                AddPath(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0f)));
+                AddPath(
+                    new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x
+                    , Camera.main.ScreenToWorldPoint(Input.mousePosition).y));
             }
         }
         // move
@@ -107,12 +114,18 @@ public class BattleUnitEventManager : MonoBehaviour
         {
             if (!_isMovingStart && _isMovingEnd)
             {
-                CalcPath();
+                CalculatePath();
+                SetVelocity();
             }
             else if (_isMovingStart && !_isMovingEnd)
             {
-                MoveUnit();
+                CompareDestination();
             }
+        }
+
+        if (_isAttacking)
+        {
+            _attackStay += Time.deltaTime;
         }
     }
     private void OnMouseDown()
@@ -160,7 +173,7 @@ public class BattleUnitEventManager : MonoBehaviour
         // Debug.Log("Mouse Exit");
         //deleteHighlight(_target);
     }
-    void HighlightAroundCollider(GameObject target, Component cpType, Color beginColor, Color endColor, float hightlightSize = 0.3f)
+    void HighlightAroundCollider(GameObject target, Component cpType, Color beginColor, Color endColor, float highlightSize = 0.3f)
     {
         //1. Create new Line Renderer
         LineRenderer lineRenderer = target.GetComponent<LineRenderer>();
@@ -183,8 +196,11 @@ public class BattleUnitEventManager : MonoBehaviour
             Vector2[] pColiderPos = (cpType as PolygonCollider2D).points;
 
             //Set color and width
-            lineRenderer.SetColors(beginColor, endColor);
-            lineRenderer.SetWidth(hightlightSize, hightlightSize);
+            //lineRenderer.SetColors(beginColor, endColor);
+            //lineRenderer.SetWidth(highlightSize, highlightSize);
+            lineRenderer.startWidth = lineRenderer.endWidth = highlightSize;
+            lineRenderer.startColor = beginColor;
+            lineRenderer.endColor = endColor;
 
             //4. Convert local to world points
             for (int i = 0; i < pColiderPos.Length; i++)
@@ -194,7 +210,8 @@ public class BattleUnitEventManager : MonoBehaviour
             }
 
             //5. Set the SetVertexCount of the LineRenderer to the Length of the points
-            lineRenderer.SetVertexCount(pColiderPos.Length + 1);
+            //lineRenderer.SetVertexCount(pColiderPos.Length + 1);
+            lineRenderer.positionCount = pColiderPos.Length + 1;
             for (int i = 0; i < pColiderPos.Length; i++)
             {
                 //6. Draw the  line
@@ -247,8 +264,11 @@ public class BattleUnitEventManager : MonoBehaviour
         //3. Get the points from the PolygonCollider2D
 
         //Set color and width
-        lineRenderer.SetColors(beginColor, endColor);
-        lineRenderer.SetWidth(highlightSize, highlightSize);
+        //lineRenderer.SetColors(beginColor, endColor);
+        //lineRenderer.SetWidth(highlightSize, highlightSize);
+        lineRenderer.startWidth = lineRenderer.endWidth = highlightSize;
+        lineRenderer.startColor = beginColor;
+        lineRenderer.endColor = endColor;
 
         //5. Set the SetVertexCount of the LineRenderer to the Length of the points
         //6. Draw the  line
@@ -259,7 +279,8 @@ public class BattleUnitEventManager : MonoBehaviour
 
         //7. Check if this is the last loop. Now Close the Line drawn
     }
-    void AddPath(Vector3 destination)
+
+    void AddPath(Vector2 destination)
     {
         //1. Create new Line Renderer
         LineRenderer lineRenderer = _target.transform.Find("Path").GetComponent<LineRenderer>();
@@ -268,23 +289,21 @@ public class BattleUnitEventManager : MonoBehaviour
             return;
         }
 
-        //2. Assign Material to the new Line Renderer
-        //lineRenderer.material = new Material(Shader.Find("Particles/Additive"));
-
         float zPos = 0f;
-        //Since this is 2D. Make sure it is in the front
-        //3. Get the points from the PolygonCollider2D
-
-        //Set color and width
-
         //5. Set the SetVertexCount of the LineRenderer to the Length of the points
         var lastIndex = lineRenderer.positionCount;
-        lineRenderer.SetVertexCount(lastIndex + 1);
+        //lineRenderer.SetVertexCount(lastIndex + 1);
+        lineRenderer.positionCount = lastIndex + 1;
         //6. Draw the  line
         lineRenderer.SetPosition(lastIndex, new Vector3(destination.x, destination.y, zPos));
-        _path.Enqueue(new Vector3(destination.x, destination.y, 0));
+        _path.Enqueue(destination);
 
         //7. Check if this is the last loop. Now Close the Line drawn
+    }
+
+    void SetVelocity()
+    {
+        _rb.velocity = _battleUnit.MoveDirection * _battleUnit.moveSpeed;
     }
     void ToggleUnitPath(bool status, GameObject unit)
     {
@@ -333,7 +352,8 @@ public class BattleUnitEventManager : MonoBehaviour
     {
         _battleCursor.RemoveSelectedUnit(this.gameObject);
     }
-    void CalcPath()
+
+    void CalculatePath()
     {
         LineRenderer lr = this.transform.Find("Path").GetComponent<LineRenderer>();
         if (lr != null)
@@ -342,50 +362,48 @@ public class BattleUnitEventManager : MonoBehaviour
             var _i = lr.GetPositions(_v);
             foreach (var v in _v)
             {
-                _path.Enqueue(new Vector3(v.x, v.y, 0));
+                _path.Enqueue(new Vector2(v.x, v.y));
             }
         }
         if (_path.Count > 0)
         {
-            CalcDirection();
+            CalculateDirection();
         }
     }
-    void CalcDirection()
+    void CalculateDirection()
     {
         LineRenderer lr = this.transform.Find("Path").GetComponent<LineRenderer>();
         if (lr != null)
         {
-            Vector3 _start;
-            Vector3 _end;
+            Vector2 _start;
+            Vector2 _end;
 
             // first of path need to be poped
-            if (_path.Peek() == lr.GetPosition(0))
+            if (this._path.Peek() == new Vector2(lr.GetPosition(0).x, lr.GetPosition(0).y))
             {
-                Debug.Log("first position");
-                _start = _path.Dequeue();
+                _start = this._path.Dequeue();
             }
             else
             {
                 _start = _nextOriginalPosition;
             }
-            _end = _path.Dequeue();
+            _end = this._path.Dequeue();
 
-            Vector3 _p = _end - _start;
-            Vector3 _direction = _p.normalized;
+            Vector2 _path = _end - _start;
+            Vector2 _direction = _path.normalized;
             _battleUnit.MoveDirection = _direction;
-            _pathMagnitude = _p.magnitude;
+            _pathMagnitude = _path.magnitude;
             _startPosition = _start;
             _isMovingStart = true;
             _isMovingEnd = false;
         }
     }
-    void MoveUnit()
+    void CompareDestination()
     {
-        Vector3 _position = _battleUnit.MoveDirection * _battleUnit.moveSpeed;
-
-        if (_pathMagnitude > (new Vector3(_target.transform.position.x, _target.transform.position.y, 0f) - _startPosition).magnitude)
+        if (Math.Abs(_pathMagnitude) 
+            > Math.Abs((new Vector2(_target.transform.position.x, _target.transform.position.y) - _startPosition).magnitude))
         {
-            this.transform.position += _position;
+            return;
         }
         else
         {
@@ -393,7 +411,8 @@ public class BattleUnitEventManager : MonoBehaviour
             // calculate next path end move
             if (_path.Count > 0)
             {
-                CalcDirection();
+                CalculateDirection();
+                SetVelocity();
             }
             else
             {
@@ -401,6 +420,7 @@ public class BattleUnitEventManager : MonoBehaviour
             }
         }
     }
+
     void EndMovingUnit()
     {
         if (_forceStopMoving || _isMoving)
@@ -417,14 +437,15 @@ public class BattleUnitEventManager : MonoBehaviour
         Destroy(this.transform.Find("Path").GetComponent<LineRenderer>());
         _path.Clear();
         _nextOriginalPosition = _target.transform.position;
-        _battleUnit.MoveDirection = new Vector3(0, 0, 0);
+        _battleUnit.MoveDirection = new Vector2(0, 0);
+        _rb.velocity = new Vector2(0, 0);
     }
     Vector3 RetruneScreenToWorldPoint(Vector3 p)
     {
         return Camera.main.ScreenToWorldPoint(p);
     }
     // Collider 컴포넌트의 is Trigger가 false인 상태로 충돌을 시작했을 때
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         // 이 컴포넌트가 부착된 게임 오브젝트의 콜라이더와 충돌한 게임 오브젝트 가져오기
         var obj = collision.gameObject;
@@ -432,18 +453,79 @@ public class BattleUnitEventManager : MonoBehaviour
         var component = collision.gameObject;
         // 콜라이더 가져오기
         var collider = collision.collider;
-        Debug.Log("start collision! [" + component.name + "]");
+        Debug.Log(this.name + " starts collision! [" + component.name + "]");
+        StartBattle(collision);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // 이 컴포넌트가 부착된 게임 오브젝트의 콜라이더와 충돌한 게임 오브젝트 가져오기
+        var obj = collision.gameObject;
+        // 특정 컴포넌트 가져오기
+        var component = collision.gameObject;
+        // 콜라이더 가져오기
+        var collider = collision.GetComponent<Collider2D>();
+        Debug.Log("start trigger! [" + component.name + "]");
     }
 
     // Collider 컴포넌트의 is Trigger가 false인 상태로 충돌중일 때
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("collision ...!");
+        Debug.Log("collision ...! / " + collision.gameObject.GetComponent<Collider2D>().name);
+        Attack(collision);
     }
 
     // Collider 컴포넌트의 is Trigger가 false인 상태로 충돌이 끝났을 때
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionExit2D(Collision2D collision)
     {
         Debug.Log("end collision!");
+        EndBattle(collision);
+    }
+    void StartBattle(Collision2D collision)
+    {
+        _isAttacking = true;
+        CreateBattleSign(collision);
+        ResetPathStack();
+        EndMovingUnit();
+    }
+    void CreateBattleSign(Collision2D collision)
+    {
+        var component = collision.gameObject;
+        var collider = collision.collider;
+        if (collider && collider.tag == "BattleUnit")
+        {
+            ContactPoint2D contact = collision.contacts[0];
+            Vector3 position = contact.point;
+            GameObject _sign = Resources.Load<GameObject>("Prefabs/BattleSign");
+            GameObject _p = Instantiate(_sign, this.transform.Find("State").transform, false);//prefab 적용 시
+            _p.transform.position = new Vector3(position.x, position.y, -9);
+            Variables.Object(_p).Set("enemy", component.GetComponent<BattleUnit>());
+        }
+    }
+    void Attack(Collision2D collision)
+    {
+        if (_attackStay >= _attackDelay)
+        {
+            //a second has passed so do something
+            _battleUnit.Attack(collision.gameObject.GetComponent<Collider2D>());
+            _attackStay = 0;
+        }
+    }
+    void EndBattle(Collision2D collision)
+    {
+        _isAttacking = false;
+        DeleteBattleSign(collision);
+    }
+    void DeleteBattleSign(Collision2D collision)
+    {
+        int cnt = this.transform.Find("State").childCount;
+        for (int i = 0; i < cnt; i++)
+        {
+            if (!transform.Find("State").GetChild(i).name.Contains("BattleSign")) continue;
+            BattleUnit _b = Variables.Object(transform.Find("State").GetChild(i)).Get<BattleUnit>("enemy");
+            if (_b.name == collision.collider.name)
+            {
+                Destroy(transform.Find("State").GetChild(i).gameObject);
+            }
+        }
     }
 }

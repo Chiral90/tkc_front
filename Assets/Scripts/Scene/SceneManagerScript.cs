@@ -48,6 +48,10 @@ public class SceneManagerScript : MonoBehaviour
     {
         SceneManager.LoadScene("SampleBattleScene");
     }
+    public void LoadSupplyMap()
+    {
+        SceneManager.LoadScene("SampleSupplyScene");
+    }
     void OnEnable()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
@@ -73,7 +77,7 @@ public class SceneManagerScript : MonoBehaviour
         {
             if (!(new TurnInfoManager().GetRemain().Equals("00:00")))
             {
-                this.GetComponent<SampleBattleScene>().ReserveAction();
+                this.GetComponent<SampleBattleScene>().ReserveBattleUnitAction();
             }
         }
     }

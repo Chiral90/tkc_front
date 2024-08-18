@@ -9,6 +9,7 @@ TagManager:
   - Building
   - UI
   - BattleMap
+  - BattleUnit
   layers:
   - Default
   - TransparentFX
