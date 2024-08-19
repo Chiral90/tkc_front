@@ -118,7 +118,6 @@
     <Compile Include="Assets/Scripts/Popup/UnitFormationController.cs" />
     <Compile Include="Assets/Scripts/Popup/UnitTypeDropdownController.cs" />
     <Compile Include="Assets/Scripts/Controller/BattleCursor.cs" />
-    <Compile Include="Assets/Casual Physics Puzzle BE6/ReadMe/Scripts/ReadmeBE6.cs" />
     <Compile Include="Assets/Scripts/Object/ChampionInfo.cs" />
     <Compile Include="Assets/Scripts/Object/BuildingEventManager.cs" />
     <Compile Include="Assets/WebGLSupport/WebGLInput/Detail/RebuildChecker.cs" />
@@ -144,7 +143,6 @@
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Properties.cginc" />
     <None Include="Assets/Sharklib/ProgressBar/Scripts/Extensions/readme.txt.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMPro_Surface.cginc" />
-    <None Include="Assets/Casual Physics Puzzle BE6/Font/OFL.txt" />
     <None Include="Assets/TextMesh Pro/Resources/LineBreaking Following Characters.txt" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets/TextMesh Pro/Shaders/TMP_SDF Overlay.shader" />

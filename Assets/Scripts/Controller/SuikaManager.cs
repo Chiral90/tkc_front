@@ -1,12 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SuikaManager : MonoBehaviour
 {
+    public double score;
     public SuikaController lastDongle;
-    public GameObject donglePrefab; //µ¿±Û ÇÁ¸®ÆÕ
-    public Transform dongleGroup;   //µ¿±ÛÀÌ »ı¼ºµÉ À§Ä¡
+    public int maxLevel = 8;
+    public GameObject donglePrefab; //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    public Transform dongleGroup;   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+    TextMeshProUGUI _score;
+    private void Awake()
+    {
+        Application.targetFrameRate = 60; //í”„ë ˆì„ì„ 60ìœ¼ë¡œ ê³ ì •
+        _score = gameObject.transform.parent.Find("Canvas").Find("Score").GetComponent<TextMeshProUGUI>();
+    }
     private void Start()
     {
         NextDongle();
@@ -14,7 +23,7 @@ public class SuikaManager : MonoBehaviour
 
     SuikaController GetDongle()
     {
-        //µ¿±Û ÇÁ¸®ÆÕ º¹»çÇØ¼­ °¡Á®¿È, ÀÌ ¶§ ºÎ¸ğ´Â µ¿±Û ±×·ìÀ¸·Î ¼³Á¤
+        //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ ï¿½ï¿½ ï¿½Î¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½×·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         GameObject instant = Instantiate(donglePrefab, dongleGroup);
         SuikaController instantDongle = instant.GetComponent<SuikaController>();
         return instantDongle;
@@ -22,30 +31,30 @@ public class SuikaManager : MonoBehaviour
 
     void NextDongle()
     {
-        //»ı¼ºµÈ µ¿±ÛÀ» °¡Á®¿Í new Dongle·Î ÁöÁ¤
+        //ìƒì„±ëœ ë™ê¸€ì„ ê°€ì ¸ì™€ new Dongleë¡œ ì§€ì •
         SuikaController newDongle = GetDongle();
         lastDongle = newDongle;
-        lastDongle.level = Random.Range(0, 8); //·¹º§ 0, 1, 2 ¿¡¼­ ·£´ıÇÏ°Ô »ı¼ºµÇµµ·Ï ±¸Çö
-        Debug.Log(lastDongle.level);
-        lastDongle.gameObject.SetActive(true); //·¹º§ ¼³Á¤ ÈÄ È°¼ºÈ­
-        StartCoroutine(WaitNext()); //´ë±âÈÄ NextDongleÀ» ½ÇÇàÇÏ´Â ÄÚ·çÆ¾ ½ÃÀÛ
+        lastDongle.manager = this; //ê²Œì„ë§¤ë‹ˆì €ë¥¼ ë„˜ê²¨ì¤€ë‹¤.
+        lastDongle.SetLevel(Random.Range(0, maxLevel - 3)); //ë ˆë²¨ 0 ~ maxLevel-1ì—ì„œ ëœë¤í•˜ê²Œ ìƒì„±ë˜ë„ë¡ êµ¬í˜„
+        lastDongle.gameObject.SetActive(true); //ë ˆë²¨ ì„¤ì • í›„ í™œì„±í™”
+        StartCoroutine(WaitNext()); //ëŒ€ê¸°í›„ NextDongleì„ ì‹¤í–‰í•˜ëŠ” ì½”ë£¨í‹´ ì‹œì‘
     }
 
     IEnumerator WaitNext()
     {
         while (lastDongle != null)
         {
-            yield return null; //ÇÑ ÇÁ·¹ÀÓÀ» ´ë±âÇÑ´Ù.
+            yield return null; //ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
         }
 
-        yield return new WaitForSeconds(2.5f); //2.5ÃÊ¸¦ ´ë±âÇÑ´Ù
+        yield return new WaitForSeconds(2.5f); //2.5ï¿½Ê¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½
 
         NextDongle();
     }
 
     public void TouchDown()
     {
-        if (lastDongle == null) //lastDongleÀÌ ¾øÀ¸¸é ½ÇÇàÇÏÁö ¾ÊÀ½
+        if (lastDongle == null) //lastDongleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             return;
 
         lastDongle.Drag();
@@ -53,9 +62,20 @@ public class SuikaManager : MonoBehaviour
 
     public void TouchUp()
     {
-        if (lastDongle == null) //lastDongleÀÌ ¾øÀ¸¸é ½ÇÇàÇÏÁö ¾ÊÀ½
+        if (lastDongle == null) //lastDongleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
             return;
         lastDongle.Drop();
-        lastDongle = null; //µå¶øÇÏ¸é¼­ º¸°ü¿ëµµ·Î ÀúÀåÇØµĞ º¯¼ö´Â null·Î ºñ¿î´Ù.
+        lastDongle = null; //ï¿½ï¿½ï¿½ï¿½Ï¸é¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ëµµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ nullï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
+    }
+
+    public void SumScore(int level)
+    {
+        score += level;
+        UpdateScore();
+    }
+
+    void UpdateScore()
+    {
+        _score.text = score.ToString();
     }
 }
