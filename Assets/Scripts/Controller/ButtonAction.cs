@@ -298,9 +298,11 @@ public class ButtonAction : MonoBehaviour
         }
     }
 
-    public void LoadSupplyMap()
+    public void LoadSuikaGame()
     {
-        // Load SupplyMap
-        GameObject.Find("SceneManager").GetComponent<SceneManagerScript>().LoadSupplyMap();
+        // Load SuikaGame
+        GameObject s = Resources.Load<GameObject>("Prefabs/Suika/Suika");
+        GameObject suika = Instantiate(s);
+        s.name = "SuikaGame";
     }
 }

@@ -36,6 +36,7 @@ public class SuikaManager : MonoBehaviour
         lastDongle = newDongle;
         lastDongle.manager = this; //게임매니저를 넘겨준다.
         lastDongle.SetLevel(Random.Range(0, maxLevel - 3)); //레벨 0 ~ maxLevel-1에서 랜덤하게 생성되도록 구현
+        lastDongle.transform.position = new Vector3(0, 4, 0);
         lastDongle.gameObject.SetActive(true); //레벨 설정 후 활성화
         StartCoroutine(WaitNext()); //대기후 NextDongle을 실행하는 코루틴 시작
     }
@@ -77,5 +78,9 @@ public class SuikaManager : MonoBehaviour
     void UpdateScore()
     {
         _score.text = score.ToString();
+    }
+    public void GameOver()
+    {
+        Debug.Log("Suika Game Over");
     }
 }

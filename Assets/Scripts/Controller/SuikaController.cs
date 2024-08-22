@@ -8,18 +8,17 @@ public class SuikaController : MonoBehaviour
     public SuikaManager manager; //nextDongle에서 게임매니저를 넘겨받음
     public bool isMerge;
     public int level;
+    public bool isReleased;
     bool _isDrag;
     Rigidbody2D _rb;
     Animator _anim;
     CircleCollider2D _circle;
-    SpriteRenderer _spriteRenderer;
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _circle = GetComponent<CircleCollider2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void OnEnable()
@@ -47,7 +46,7 @@ public class SuikaController : MonoBehaviour
     }
     void OnCollisionStay2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Dongle")
+        if (collision.gameObject.tag == "SuikaDongle")
         {
             //충돌한 동글을 가져온다.
             SuikaController other = collision.gameObject.GetComponent<SuikaController>();
@@ -78,6 +77,28 @@ public class SuikaController : MonoBehaviour
             }
         }
     }
+    
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "SuikaBorderline")
+        {
+            if (isReleased)
+            {
+                manager.GameOver();
+            }
+            else
+            {
+                isReleased = true;
+            }
+        }
+    }
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "SuikaBorderLine")
+        {
+            manager.GameOver();
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -93,8 +114,8 @@ public class SuikaController : MonoBehaviour
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
             //x�� ��輳��
-            float leftBorder = -2.3f + transform.localScale.x / 2f; //��1�� x��ǥ�� -5�̰� �β��� 0.5�̹Ƿ� ���� ������ ���� �˳��ϰ� -4.6���� ����, ������ �������� + ���ش�.
-            float rightBorder = 2.3f - transform.localScale.x / 2f; //��2�� x��ǥ�� 5�̰� �β��� 0.5�̹Ƿ� ���� ���� ���� �˳��ϰ� 4.6���� ����, ������ �������� - ���ش�.
+            float leftBorder = -3f + transform.localScale.x / 2f; //��1�� x��ǥ�� -5�̰� �β��� 0.5�̹Ƿ� ���� ������ ���� �˳��ϰ� -4.6���� ����, ������ �������� + ���ش�.
+            float rightBorder = 3f - transform.localScale.x / 2f; //��2�� x��ǥ�� 5�̰� �β��� 0.5�̹Ƿ� ���� ���� ���� �˳��ϰ� 4.6���� ����, ������ �������� - ���ش�.
 
             if (mousePos.x < leftBorder)
             {
@@ -117,6 +138,7 @@ public class SuikaController : MonoBehaviour
     {
         _isDrag = false;
         _rb.simulated = true;
+        manager.SumScore(level);
     }
     public void SetLevel(int l)
     {

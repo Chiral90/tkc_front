@@ -10,7 +10,8 @@ TagManager:
   - UI
   - BattleMap
   - BattleUnit
-  - Dongle
+  - SuikaDongle
+  - SuikaBorderline
   layers:
   - Default
   - TransparentFX

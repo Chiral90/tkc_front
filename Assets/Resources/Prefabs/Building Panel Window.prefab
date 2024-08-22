@@ -2209,16 +2209,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa3a202d930f9908b905e4124641a9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bData:
-    building_name: 
-    castellan: 
-    team: 0
-    building_type: 0
-    population: 0
-    food: 0
-    morale: 0
-    stationed: []
-    status: 0
   popupCanvas: {fileID: 0}
   popupAnimator: {fileID: 0}
 --- !u!1 &6359992057079703610
@@ -4421,7 +4411,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 851073498317186777}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 105507655225245440, guid: b55a1e53be7b9ef80b4d184b3b17af5d, type: 3}
+        m_TargetAssemblyTypeName: ButtonAction, Assembly-CSharp
+        m_MethodName: LoadSuikaGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &9118164295876956190
 GameObject:
   m_ObjectHideFlags: 0
